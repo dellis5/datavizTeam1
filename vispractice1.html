@@ -39,7 +39,6 @@
       opacity: 0.4;
     }
 
-    /* ── INTRO ── */
     #intro {
       height: 100vh;
       display: flex;
@@ -121,7 +120,6 @@
       background: var(--red);
     }
 
-    /* ── PROGRESS DOTS ── */
     #progress {
       position: fixed;
       right: 1.5rem; top: 50%;
@@ -151,7 +149,6 @@
       border-color: var(--gold);
     }
 
-    /* ── SCROLLY ── */
     #scrolly {
       display: flex;
       align-items: flex-start;
@@ -194,7 +191,6 @@
 
     #chart { width: 100%; height: 100%; }
 
-    /* ── LEGEND ── */
     #legend {
       display: flex;
       gap: 1.5rem;
@@ -217,7 +213,6 @@
       border-radius: 2px;
     }
 
-    /* ── STEPS ── */
     #steps {
       width: 42%;
       padding: 60vh 0 50vh 0;
@@ -277,7 +272,6 @@
       border-left: 2px solid var(--gold);
     }
 
-    /* ── D3 ── */
     .x-axis path, .x-axis line,
     .y-axis path, .y-axis line { stroke: var(--border); }
 
@@ -300,7 +294,6 @@
       fill: var(--muted);
     }
 
-    /* ── TOOLTIP ── */
     #tooltip {
       position: fixed;
       background: var(--card2);
@@ -341,10 +334,10 @@
 </nav>
 
 <section id="intro">
-  <div class="intro-eyebrow">A data story · 28,148 anime analyzed</div>
   <h1>The <span>Golden</span><br>Age of<br>Anime</h1>
-  <p>Six decades of animation. Thousands of studios. Millions of fans rating every show. But when did anime actually peak — and has quality survived the explosion in volume?</p>
-  <div class="scroll-hint">Scroll to explore</div>
+  <p>Six decades of animation. Thousands of studios. Millions of fans rating every show. But when did anime actually peak?</p>
+  <p>Bhavya, Daniel, Kathy, Leah, Nirupam </p>
+
 </section>
 
 <section id="scrolly">
@@ -359,26 +352,26 @@
     <div class="step" data-step="0">
       <div class="step-number">01</div>
       <h2>The Flood</h2>
-      <p>Since the 1960s, anime production has grown at an extraordinary pace. What started as a handful of TV shows per year became hundreds by the 2010s — an industry-wide explosion driven by streaming, global fandom, and lower production barriers.</p>
-      <div class="insight">📺 Peak year: 2023 with 233 new TV anime</div>
+      <p>Since the 1960s, anime production has grown at an extraordinary pace. What started as a handful of TV shows per year became hundreds by the 2010s, an industry-wide explosion driven by streaming, global fandom, and lower production barriers.</p>
+      <div class="insight">Peak year: 2023 with 233 new TV anime</div>
     </div>
     <div class="step" data-step="1">
       <div class="step-number">02</div>
       <h2>The Quality Question</h2>
-      <p>More anime inevitably means more filler — but surprisingly, average scores have held steady or even improved in recent years. Early anime from the 60s and 70s scores lower, possibly due to fewer ratings and different storytelling norms.</p>
-      <div class="insight">🏅 Gold = higher rated years · Pink = lower rated years</div>
+      <p>More anime inevitably means more filler, but surprisingly, average scores have held steady or even improved in recent years. Early anime from the 60s and 70s scores lower, possibly due to fewer ratings and different storytelling norms.</p>
+      <div class="insight">Scores have trended upward since the early 2000s</div>
     </div>
     <div class="step" data-step="2">
       <div class="step-number">03</div>
       <h2>The Golden Studios</h2>
-      <p>A small group of studios consistently produce the highest-rated anime. These are the powerhouses — the ones fans trust to deliver. Each bar animates in ranked by average score across all their shows.</p>
-      <div class="insight">⭐ Only studios with 10+ shows qualify</div>
+      <p>Which studio reigns supreme in terms of viewer rating? Does more shows/ more legacy mean better reviews?</p>
+      <div class="insight">Only studios with 10+ shows qualify</div>
     </div>
     <div class="step" data-step="3">
       <div class="step-number">04</div>
       <h2>Source Material</h2>
-      <p>Does it matter whether an anime is adapted from manga, a light novel, a game, or made from scratch? The data says yes — manga and light novel adaptations consistently score the highest, likely because the source material has already been proven popular with fans before the anime even airs.</p>
-      <div class="insight">📚 Manga & light novels top the chart — games and originals lag behind</div>
+      <p>Does it matter whether an anime is adapted from manga, a light novel, a game, or made from scratch? The data says yes... manga and light novel adaptations consistently score the highest, likely because the source material has already been proven popular with fans before the anime even airs.</p>
+      <div class="insight">Manga & light novels top the chart, games and originals lag behind</div>
     </div>
   </div>
 </section>
@@ -392,16 +385,16 @@
   const tooltip = document.getElementById('tooltip');
   const chartWrapper = document.getElementById('chart-wrapper');
 
-  // ── SVG ──
-  const margin = { top: 56, right: 24, bottom: 48, left: 72 };
+  //AI helped here build SVG 
+  const margin = { top: 56, right: 24, bottom: 48, left: 100 };
   const chartEl = document.getElementById('chart');
   const svg = d3.select('#chart').append('svg').attr('width','100%').attr('height','100%');
   const yLabelG = svg.append('g');
+  const xLabelG = svg.append('g');
   const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
   const xAxisG = g.append('g').attr('class','x-axis');
   const yAxisG = g.append('g').attr('class','y-axis');
 
-  // ── TOOLTIP ──
   function showTooltip(html, event) {
     tooltip.innerHTML = html;
     tooltip.style.opacity = 1;
@@ -410,12 +403,26 @@
   }
   function hideTooltip() { tooltip.style.opacity = 0; }
 
-  // ── HELPERS ──
   function setChartTitle(title, sub) {
     svg.selectAll('.chart-title-text, .chart-sub-text').remove();
     svg.append('text').attr('class','chart-title-text').attr('x', margin.left).attr('y', 22).text(title);
     svg.append('text').attr('class','chart-sub-text').attr('x', margin.left).attr('y', 38).text(sub);
   }
+
+  function setXLabel(label) {
+  xLabelG.selectAll('*').remove();
+  if (!label) return;
+  const W = chartEl.clientWidth - margin.left - margin.right;
+  const H = chartEl.clientHeight - margin.top - margin.bottom;
+  xLabelG.append('text')
+    .attr('transform', `translate(${margin.left + W/2}, ${margin.top + H + 40})`)
+    .attr('text-anchor','middle')
+    .attr('font-family','DM Sans, sans-serif')
+    .attr('font-size','10px')
+    .attr('fill','#a899cc')
+    .attr('letter-spacing','0.08em')
+    .text(label.toUpperCase());
+}
 
   function setYLabel(label) {
     yLabelG.selectAll('*').remove();
@@ -431,13 +438,14 @@
       .text(label.toUpperCase());
   }
 
+  
+
   function setLegend(items) {
     document.getElementById('legend').innerHTML = items.map(i =>
       `<div class="legend-item"><div class="legend-swatch" style="background:${i.color}"></div><span>${i.label}</span></div>`
     ).join('');
   }
 
-  // ── PROGRESS ──
   function updateProgress(step) {
     document.querySelectorAll('.progress-dot').forEach((d,i) => d.classList.toggle('active', i === step));
   }
@@ -453,7 +461,7 @@
     progressEl.classList.toggle('visible', entries[0].isIntersecting);
   }, { threshold: 0.1 }).observe(document.getElementById('scrolly'));
 
-  // ── SCENE ROUTER ──
+
   function drawScene(step) {
     if (step === currentStep) return;
     currentStep = step;
@@ -476,11 +484,12 @@
     if (step === 3) drawSource(W, H);
   }
 
-  // ── SCENE 1: VOLUME ──
+  // vis 1: VOLUME
   function drawVolume(W, H) {
     setChartTitle('ANIME PRODUCTION OVER TIME', 'Number of TV anime per year since 1961');
     setLegend([{ color:'#c93871', label:'TV anime count per year' }]);
     setYLabel('Number of shows');
+    setXLabel('Year');
 
     const years = data.by_year;
     g.selectAll('.dot,.dot-line,.annotation,.rank-label,.bar').remove();
@@ -515,7 +524,7 @@
       .delay((d,i) => stagger ? i*7 : 0)
       .attr('y', d=>y(d.count)).attr('height', d=>H-y(d.count));
 
-    // peak annotation
+    //annotation
     const peak = years.reduce((a,b)=>b.count>a.count?b:a);
     const delay = stagger ? years.length*7+600 : 700;
     setTimeout(() => {
@@ -529,127 +538,183 @@
         .attr('rx',4).attr('fill','#1f1558').attr('stroke','#f8e321').attr('stroke-width',1);
       ann.append('text').attr('x',ax).attr('y',ay-36).attr('text-anchor','middle')
         .attr('font-family','DM Sans,sans-serif').attr('font-size','10px').attr('fill','#f8e321')
-        .text(`Peak: ${peak.count} shows (${peak.Year})`);
+        .text(`${peak.count} shows (${peak.Year})`);
       ann.transition().duration(400).attr('opacity',1);
     }, delay);
   }
 
-  // ── SCENE 2: SCORE OVERLAY ──
+  //vis 2: SCORE OVERLAY
   function drawScoreOverlay(W, H) {
-    setChartTitle('DOES MORE MEAN WORSE?','Bars colored by average MAL score per year');
-    setLegend([
-      {color:'#c93871', label:'Lower rated'},
-      {color:'#312678', label:'Average'},
-      {color:'#f8e321', label:'Higher rated'},
-    ]);
-    setYLabel('Number of shows');
+  setChartTitle('HAS QUALITY KEPT UP?', 'Average MAL score per year since 1961');
+  setLegend([{ color:'#c93871', label:'Average score per year' }]);
+  setYLabel('Average Score');
 
-    const years = data.by_year;
-    g.selectAll('.dot,.dot-line,.annotation,.rank-label,.bar').remove();
-    xAxisG.selectAll('*').remove();
-    yAxisG.selectAll('*').remove();
+  const years = data.by_year;
+  g.selectAll('.bar,.dot,.dot-line,.annotation,.rank-label,.score-label').remove();
+  xAxisG.selectAll('*').remove();
+  yAxisG.selectAll('*').remove();
 
-    const x = d3.scaleBand().domain(years.map(d=>d.Year)).range([0,W]).padding(0.15);
-    const y = d3.scaleLinear().domain([0,d3.max(years,d=>d.count)]).nice().range([H,0]);
-    const colorScale = d3.scaleLinear()
-      .domain([d3.min(years,d=>d.avg_score), 6.4, d3.max(years,d=>d.avg_score)])
-      .range(['#c93871','#312678','#f8e321']);
+  const x = d3.scaleLinear()
+    .domain(d3.extent(years, d=>d.Year))
+    .range([0, W]);
 
-    xAxisG.attr('transform',`translate(0,${H})`)
-      .call(d3.axisBottom(x).tickValues(x.domain().filter(d=>d%10===0)))
-      .selectAll('text').attr('fill','#a899cc');
-    yAxisG.call(d3.axisLeft(y).ticks(6)).selectAll('text').attr('fill','#a899cc');
+  const y = d3.scaleLinear()
+    .domain([5.5, d3.max(years, d=>d.avg_score) + 0.2]).nice()
+    .range([H, 0]);
 
-    g.selectAll('.bar').data(years,d=>d.Year).enter()
-      .append('rect').attr('class','bar')
-      .attr('x',d=>x(d.Year)).attr('width',x.bandwidth())
-      .attr('y',d=>y(d.count)).attr('height',d=>H-y(d.count))
-      .attr('rx',2).attr('cursor','pointer')
-      .attr('fill',d=>colorScale(d.avg_score))
-      .attr('opacity',0)
-      .on('mousemove', function(event,d) {
-        showTooltip(`<strong>${d.Year}</strong>Avg score: ${d.avg_score.toFixed(2)}<br>${d.count} anime`, event);
-        g.selectAll('.bar').transition().duration(150).attr('opacity', dd=>dd===d?1:0.25);
-      })
-      .on('mouseleave', function() {
-        hideTooltip();
-        g.selectAll('.bar').transition().duration(150).attr('opacity',1);
-      })
-      .transition().duration(600).ease(d3.easeCubicOut)
-      .attr('opacity',1);
+  xAxisG.attr('transform',`translate(0,${H})`)
+    .call(d3.axisBottom(x).tickFormat(d3.format('d')).ticks(8))
+    .selectAll('text').attr('fill','#a899cc');
+
+  yAxisG.call(d3.axisLeft(y).ticks(6))
+    .selectAll('text').attr('fill','#a899cc');
+
+  // Area fill under line
+  const area = d3.area()
+    .x(d => x(d.Year))
+    .y0(H)
+    .y1(d => y(d.avg_score))
+    .curve(d3.curveCatmullRom);
+
+  g.append('path').attr('class','dot')
+    .datum(years)
+    .attr('fill', '#c93871')
+    .attr('opacity', 0.15)
+    .attr('d', area);
+
+  // Line
+  const line = d3.line()
+    .x(d => x(d.Year))
+    .y(d => y(d.avg_score))
+    .curve(d3.curveCatmullRom);
+
+  const path = g.append('path').attr('class','dot')
+    .datum(years)
+    .attr('fill','none')
+    .attr('stroke','#c93871')
+    .attr('stroke-width', 2.5)
+    .attr('d', line);
+
+  // Animate line drawing
+  const totalLength = path.node().getTotalLength();
+  path
+    .attr('stroke-dasharray', `${totalLength} ${totalLength}`)
+    .attr('stroke-dashoffset', totalLength)
+    .transition().duration(1200).ease(d3.easeCubicOut)
+    .attr('stroke-dashoffset', 0);
+
+  // Hover dots
+  g.selectAll('.dot-circle').data(years).enter()
+    .append('circle').attr('class','dot dot-circle')
+    .attr('cx', d=>x(d.Year))
+    .attr('cy', d=>y(d.avg_score))
+    .attr('r', 3)
+    .attr('fill','#c93871')
+    .attr('cursor','pointer')
+    .on('mousemove', function(event,d) {
+      showTooltip(`<strong>${d.Year}</strong>Avg score: ${d.avg_score.toFixed(2)}<br>${d.count} anime`, event);
+      d3.select(this).attr('r', 6).attr('fill','#f8e321');
+    })
+    .on('mouseleave', function() {
+      hideTooltip();
+      d3.select(this).attr('r', 3).attr('fill','#c93871');
+    });    
   }
 
-  // ── SCENE 3: STUDIOS ──
+  // vis 3: STUDIOS
   function drawStudios(W, H) {
-    setChartTitle('THE GOLDEN STUDIOS','Top 15 studios by average MAL score (min. 10 shows)');
-    setLegend([{color:'#f8e321', label:'Average score across all studio shows'}]);
-    setYLabel('');
+  setChartTitle('QUALITY VS. OUTPUT', 'Each dot is a studio — size = number of shows, position = avg score vs. total shows');
+  setLegend([{ color:'#FF89B5', label:'Studio — hover for details' }]);
+  setXLabel('Number of Shows');
+  setYLabel('Avg MAL Score');
 
-    const studios = data.by_studio;
-    g.selectAll('.bar,.dot,.dot-line,.annotation,.rank-label').remove();
-    xAxisG.selectAll('*').remove();
-    yAxisG.selectAll('*').remove();
+  const studios = data.by_studio;
+  g.selectAll('.bar,.dot,.dot-line,.annotation,.rank-label,.score-label').remove();
+  xAxisG.selectAll('*').remove();
+  yAxisG.selectAll('*').remove();
 
-    const x = d3.scaleLinear().domain([5, d3.max(studios,d=>d.avg_score)+0.1]).range([0,W]);
-    const y = d3.scaleBand().domain(studios.map(d=>d.Studios)).range([0,H]).padding(0.25);
+  const x = d3.scaleLinear()
+    .domain([0, d3.max(studios, d=>d.count) * 1.15])
+    .range([0, W]);
 
-    xAxisG.attr('transform',`translate(0,${H})`)
-      .call(d3.axisBottom(x).ticks(5)).selectAll('text').attr('fill','#a899cc');
-    yAxisG.call(d3.axisLeft(y)).selectAll('text').attr('fill','#a899cc').style('font-size','11px');
+  const y = d3.scaleLinear()
+    .domain([d3.min(studios, d=>d.avg_score) - 0.1, d3.max(studios, d=>d.avg_score) + 0.1])
+    .range([H, 0]);
 
-    // rank labels
-    g.selectAll('.rank-label').data(studios).enter()
-      .append('text').attr('class','rank-label')
-      .attr('x',-8).attr('y',d=>y(d.Studios)+y.bandwidth()/2+4)
-      .attr('text-anchor','end').attr('font-family','Bebas Neue,sans-serif')
-      .attr('font-size','12px').attr('fill','#c93871').attr('opacity',0)
-      .text((d,i)=>`#${i+1}`)
-      .transition().duration(400).delay((d,i)=>i*60).attr('opacity',1);
+  const r = d3.scaleSqrt()
+    .domain([0, d3.max(studios, d=>d.count)])
+    .range([6, 28]);
 
-    // tracks
-    g.selectAll('.track').data(studios).enter()
-      .append('rect').attr('class','bar track')
-      .attr('x',0).attr('y',d=>y(d.Studios))
-      .attr('width',W).attr('height',y.bandwidth())
-      .attr('fill','#180f44').attr('rx',3);
+  xAxisG.attr('transform',`translate(0,${H})`)
+    .call(d3.axisBottom(x).ticks(6))
+    .selectAll('text').attr('fill','#a899cc');
 
-    // bars
-    g.selectAll('.bar-fill').data(studios).enter()
-      .append('rect').attr('class','bar bar-fill')
-      .attr('x',0).attr('y',d=>y(d.Studios))
-      .attr('height',y.bandwidth()).attr('width',0)
-      .attr('fill','#f8e321').attr('rx',3).attr('opacity',0.85).attr('cursor','pointer')
-      .on('mousemove', function(event,d) {
-        showTooltip(`<strong>${d.Studios}</strong>Avg score: ${d.avg_score.toFixed(2)}<br>${d.count} shows`, event);
-        g.selectAll('.bar-fill').transition().duration(150).attr('opacity', dd=>dd===d?1:0.2);
-        g.selectAll('.track').transition().duration(150).attr('opacity', dd=>dd===d?1:0.4);
-      })
-      .on('mouseleave', function() {
-        hideTooltip();
-        g.selectAll('.bar-fill').transition().duration(150).attr('opacity',0.85);
-        g.selectAll('.track').transition().duration(150).attr('opacity',1);
-      })
-      .transition().duration(700).ease(d3.easeCubicOut)
-      .delay((d,i)=>i*60).attr('width',d=>x(d.avg_score));
+  yAxisG.call(d3.axisLeft(y).ticks(6))
+    .selectAll('text').attr('fill','#a899cc');
 
-    // score labels inside bars
-    g.selectAll('.score-label').data(studios).enter()
-      .append('text').attr('class','bar score-label')
-      .attr('x',4).attr('y',d=>y(d.Studios)+y.bandwidth()/2+4)
-      .attr('fill','#080d1e').attr('font-size','11px').attr('font-weight','600')
-      .attr('font-family','DM Sans,sans-serif').attr('opacity',0)
-      .text(d=>d.avg_score.toFixed(2))
-      .transition().duration(700).delay((d,i)=>i*60+400)
-      .attr('opacity',1).attr('x',d=>x(d.avg_score)-36);
-  }
+  // Gridlines
+  g.selectAll('.gridline-h').data(y.ticks(6)).enter()
+    .append('line').attr('class','dot gridline-h')
+    .attr('x1', 0).attr('x2', W)
+    .attr('y1', d=>y(d)).attr('y2', d=>y(d))
+    .attr('stroke','#312678').attr('stroke-width', 1)
+    .attr('stroke-dasharray','3,3');
 
-  // ── SCENE 4: SOURCE ──
+  // Dots
+  g.selectAll('.studio-dot').data(studios).enter()
+    .append('circle').attr('class','dot studio-dot')
+    .attr('cx', d=>x(d.count))
+    .attr('cy', H) // start at bottom, animate up
+    .attr('r', 0)
+    .attr('fill','#FF89B5')
+    .attr('opacity', 0.85)
+    .attr('stroke','#080d1e')
+    .attr('stroke-width', 1.5)
+    .attr('cursor','pointer')
+    .on('mousemove', function(event, d) {
+      showTooltip(`<strong>${d.Studios}</strong>Avg score: ${d.avg_score.toFixed(2)}<br>${d.count} shows`, event);
+      g.selectAll('.studio-dot').transition().duration(150)
+        .attr('opacity', dd=>dd===d ? 1 : 0.2);
+      g.selectAll('.studio-label').transition().duration(150)
+        .attr('opacity', dd=>dd===d ? 1 : 0);
+      d3.select(this).attr('stroke','#f8e321').attr('stroke-width', 2.5);
+    })
+    .on('mouseleave', function() {
+      hideTooltip();
+      g.selectAll('.studio-dot').transition().duration(150).attr('opacity', 0.85);
+      g.selectAll('.studio-label').transition().duration(150).attr('opacity', 1);
+      d3.select(this).attr('stroke','#080d1e').attr('stroke-width', 1.5);
+    })
+    .transition().duration(700).ease(d3.easeCubicOut)
+    .delay((d,i) => i * 60)
+    .attr('cy', d=>y(d.avg_score))
+    .attr('r', d=>r(d.count));
+
+  // Studio name labels
+  g.selectAll('.studio-label').data(studios).enter()
+    .append('text').attr('class','dot studio-label')
+    .attr('x', d=>x(d.count))
+    .attr('y', d=>y(d.avg_score) - r(d.count) - 5)
+    .attr('text-anchor','middle')
+    .attr('font-family','DM Sans, sans-serif')
+    .attr('font-size','9px')
+    .attr('fill','#f9e8d0')
+    .attr('opacity', 0)
+    .text(d=>d.Studios)
+    .transition().duration(400).delay((d,i)=>i*60+500)
+    .attr('opacity',1);
+}
+
+  
+
+  // vis 4: SOURCE
   function drawSource(W, H) {
     setChartTitle('DOES SOURCE MATERIAL MATTER?','Avg score by origin — manga, original, game, etc. (min. 10 shows)');
     setLegend([
       {color:'#c93871', label:'Lower rated'},
       {color:'#f8e321', label:'Higher rated'},
     ]);
+    setXLabel('Average MAL Score');
     setYLabel('');
 
     const sources = data.by_source.filter(d=>d.count>=10);
@@ -708,7 +773,7 @@
       .attr('x',d=>x(d.avg_score)+14).attr('opacity',1);
   }
 
-  // ── SCROLLAMA ──
+  //scrollama
   function initScrollama() {
     scrollama().setup({ step:'.step', offset:0.5, debug:false })
       .onStepEnter(response => {
@@ -724,7 +789,7 @@
     window.addEventListener('resize', () => location.reload());
   }
 
-  // ── INIT ──
+  // init
   d3.json('anime_data.json').then(loaded => {
     data = loaded;
     // draw scene 0 directly without fade on first load
