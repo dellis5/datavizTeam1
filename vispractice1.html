@@ -331,6 +331,7 @@
   <div class="progress-dot" data-step="1"></div>
   <div class="progress-dot" data-step="2"></div>
   <div class="progress-dot" data-step="3"></div>
+  <div class="progress-dot" data-step="4"></div>
 </nav>
 
 <section id="intro">
@@ -373,6 +374,13 @@
       <p>Does it matter whether an anime is adapted from manga, a light novel, a game, or made from scratch? The data says yes... manga and light novel adaptations consistently score the highest, likely because the source material has already been proven popular with fans before the anime even airs.</p>
       <div class="insight">Manga & light novels top the chart, games and originals lag behind</div>
     </div>
+   <div class="step-number">05</div>
+  <h2>What Contributes to Success?</h2>
+  <p>
+    To understand what helps an anime succeed, we looked at both average ratings and how many shows belong to each group. The results show that studios have a slight edge over source material, suggesting that strong production quality and a studio’s reputation can matter just as much as the story it comes from.
+  </p>
+  <div class="insight">Studios contribute 52.4%, while Source contributes 47.6%</div>
+  </div>
   </div>
 </section>
 
@@ -386,7 +394,7 @@
   const chartWrapper = document.getElementById('chart-wrapper');
 
   //AI helped here build SVG 
-  const margin = { top: 56, right: 24, bottom: 48, left: 100 };
+  const margin = { top: 56, right: 50, bottom: 48, left: 100 };
   const chartEl = document.getElementById('chart');
   const svg = d3.select('#chart').append('svg').attr('width','100%').attr('height','100%');
   const yLabelG = svg.append('g');
@@ -482,6 +490,7 @@
     if (step === 1) drawScoreOverlay(W, H);
     if (step === 2) drawStudios(W, H);
     if (step === 3) drawSource(W, H);
+    if (step === 4) drawWeightedContribution(W, H);
   }
 
   // vis 1: VOLUME
@@ -772,6 +781,105 @@
       .transition().duration(400).delay((d,i)=>i*70+500)
       .attr('x',d=>x(d.avg_score)+14).attr('opacity',1);
   }
+
+  function drawWeightedContribution(W, H) {
+  setChartTitle(
+    'WHAT CONTRIBUTES TO ANIME SUCCESS?',
+    'Weighted contribution estimate using avg score × number of anime'
+  );
+
+  setLegend([
+    { color:'#c93871', label:'Weighted contribution' }
+  ]);
+
+  setXLabel('Contribution');
+  setYLabel('');
+
+  g.selectAll('.bar,.dot,.dot-line,.annotation,.rank-label,.score-label,.dot-label,.studio-label,.gridline-h')
+    .remove();
+
+  xAxisG.selectAll('*').remove();
+  yAxisG.selectAll('*').remove();
+
+  const studioWeighted =
+    d3.sum(data.by_studio, d => d.avg_score * d.count) /
+    d3.sum(data.by_studio, d => d.count);
+
+  const sourceFiltered = data.by_source.filter(d => d.count >= 10);
+
+  const sourceWeighted =
+    d3.sum(sourceFiltered, d => d.avg_score * d.count) /
+    d3.sum(sourceFiltered, d => d.count);
+
+  const contributionData = [
+    { category: 'Studios', value: studioWeighted },
+    { category: 'Source Material', value: sourceWeighted }
+  ];
+
+  const total = d3.sum(contributionData, d => d.value);
+
+  contributionData.forEach(d => {
+    d.percent = d.value / total;
+  });
+
+  const x = d3.scaleLinear()
+    .domain([0, d3.max(contributionData, d => d.percent)])
+    .range([0, W]);
+
+  const y = d3.scaleBand()
+    .domain(contributionData.map(d => d.category))
+    .range([0, H])
+    .padding(0.45);
+
+  xAxisG.attr('transform', `translate(0,${H})`)
+    .call(d3.axisBottom(x).tickFormat(d3.format('.0%')).ticks(5))
+    .selectAll('text')
+    .attr('fill', '#a899cc');
+
+  yAxisG.call(d3.axisLeft(y))
+    .selectAll('text')
+    .attr('fill', '#a899cc')
+    .style('font-size', '12px');
+
+  g.selectAll('.bar')
+    .data(contributionData)
+    .enter()
+    .append('rect')
+    .attr('class', 'bar')
+    .attr('x', 0)
+    .attr('y', d => y(d.category))
+    .attr('height', y.bandwidth())
+    .attr('width', 0)
+    .attr('rx', 6)
+    .attr('fill', '#c93871')
+    .attr('cursor', 'pointer')
+    .on('mousemove', function(event, d) {
+      showTooltip(
+        `<strong>${d.category}</strong>${(d.percent * 100).toFixed(1)}% contribution<br>Weighted score: ${d.value.toFixed(2)}`,
+        event
+      );
+      d3.select(this).attr('fill', '#f8e321');
+    })
+    .on('mouseleave', function() {
+      hideTooltip();
+      d3.select(this).attr('fill', '#c93871');
+    })
+    .transition()
+    .duration(800)
+    .attr('width', d => x(d.percent));
+
+  g.selectAll('.dot-label')
+    .data(contributionData)
+    .enter()
+    .append('text')
+    .attr('class', 'dot dot-label')
+    .attr('x', d => x(d.percent) + 12)
+    .attr('y', d => y(d.category) + y.bandwidth() / 2 + 5)
+    .attr('fill', '#f8e321')
+    .attr('font-size', '13px')
+    .attr('font-family', 'DM Sans, sans-serif')
+    .text(d => (d.percent * 100).toFixed(1) + '%');
+}
 
   //scrollama
   function initScrollama() {
