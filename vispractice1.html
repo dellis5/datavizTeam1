@@ -1,377 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Golden Age of Anime</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
   <style>
     :root {
-      --red: #c93871;
-      --gold: #f8e321;
-      --peach: #f9c387;
-      --salmon: #d96c72;
-      --bg: #080d1e;
-      --card: #180f44;
-      --card2: #1f1558;
-      --text: #f9e8d0;
-      --muted: #a899cc;
-      --border: #312678;
+      --red:#c93871; --gold:#f8e321; --peach:#f9c387;
+      --bg:#080d1e; --card:#180f44; --card2:#1f1558;
+      --text:#f9e8d0; --muted:#a899cc; --border:#312678;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+    body::before{
+      content:'';position:fixed;inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events:none;z-index:9999;opacity:0.4;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
+    #intro{
+      min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+      align-items:flex-start;padding:6rem 8vw;position:relative;overflow:hidden;
+      background:radial-gradient(ellipse at 80% 50%,rgba(201,56,113,0.12) 0%,transparent 60%),
+                 radial-gradient(ellipse at 20% 80%,rgba(49,38,120,0.2) 0%,transparent 50%),var(--bg);
     }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.4;
+    #intro::after{
+      content:'anime';position:absolute;right:-2vw;top:50%;transform:translateY(-50%);
+      font-family:'Bebas Neue',sans-serif;font-size:30vw;color:transparent;
+      -webkit-text-stroke:1px rgba(201,56,113,0.1);line-height:1;pointer-events:none;user-select:none;
     }
-
-    #intro {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 0 8vw;
-      position: relative;
-      overflow: hidden;
-      background: radial-gradient(ellipse at 80% 50%, rgba(201,56,113,0.12) 0%, transparent 60%),
-                  radial-gradient(ellipse at 20% 80%, rgba(49,38,120,0.2) 0%, transparent 50%),
-                  var(--bg);
+    #intro h1{
+      font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,9vw,9rem);
+      line-height:0.92;color:var(--text);margin-bottom:2rem;
+      opacity:0;animation:fadeUp 0.8s 0.4s forwards;
     }
-
-    #intro::after {
-      content: 'anime';
-      position: absolute;
-      right: -2vw; top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 30vw;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(201,56,113,0.1);
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
+    #intro h1 span{color:var(--gold);}
+    .intro-body{max-width:540px;opacity:0;animation:fadeUp 0.8s 0.6s forwards;}
+    .intro-body p{font-size:clamp(1rem,1.3vw,1.15rem);color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:1rem;}
+    .intro-body p strong{color:var(--text);font-weight:500;}
+    .intro-body p em{color:var(--peach);font-style:italic;}
+    .intro-question{
+      margin-top:1.5rem;padding:1.25rem 1.5rem;
+      background:rgba(248,227,33,0.05);border:1px solid rgba(248,227,33,0.25);
+      border-radius:10px;font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(1.2rem,2vw,1.6rem);letter-spacing:0.05em;color:var(--gold);line-height:1.2;
     }
-
-    .intro-eyebrow {
-      font-size: 0.75rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.2s forwards;
+    .byline{margin-top:1.5rem;font-size:0.72rem;letter-spacing:0.2em;color:var(--border);text-transform:uppercase;}
+    .scroll-hint{
+      position:absolute;bottom:3rem;left:8vw;
+      display:flex;align-items:center;gap:0.75rem;
+      color:var(--muted);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;
+      opacity:0;animation:fadeUp 0.8s 1.2s forwards;
     }
+    .scroll-hint::before{content:'';display:block;width:40px;height:1px;background:var(--red);}
 
-    #intro h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3.5rem, 9vw, 9rem);
-      line-height: 0.92;
-      color: var(--text);
-      margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.4s forwards;
-    }
+    .narr-section{max-width:700px;margin:0 auto;padding:7vw 4vw 4vw;}
+    .narr-eyebrow{font-size:0.68rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--red);margin-bottom:0.9rem;}
+    .narr-hed{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3.2rem);letter-spacing:0.04em;color:var(--text);line-height:1.05;margin-bottom:1.5rem;}
+    .narr-hed span{color:var(--gold);}
+    .narr-section p{font-size:1.05rem;line-height:1.9;color:var(--muted);font-weight:300;margin-bottom:1.2rem;}
+    .narr-section p strong{color:var(--text);font-weight:500;}
+    .narr-section p em{color:var(--peach);font-style:italic;}
+    .narr-pull{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,2.2vw,1.8rem);color:var(--gold);letter-spacing:0.05em;line-height:1.25;border-left:3px solid var(--red);padding-left:1.25rem;margin:2rem 0;}
+    .narr-scroll-cue{display:flex;align-items:center;gap:0.75rem;margin-top:2.5rem;color:var(--muted);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;}
+    .narr-scroll-cue::before{content:'';display:block;width:40px;height:1px;background:var(--red);}
 
-    #intro h1 span { color: var(--red); }
+    #progress{position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:0.6rem;z-index:100;opacity:0;transition:opacity 0.4s;}
+    #progress.visible{opacity:1;}
+    .progress-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:1px solid var(--muted);cursor:pointer;transition:background 0.3s,transform 0.3s;}
+    .progress-dot.active{background:var(--gold);transform:scale(1.5);border-color:var(--gold);}
 
-    #intro p {
-      font-size: clamp(1rem, 1.4vw, 1.2rem);
-      color: var(--muted);
-      max-width: 500px;
-      line-height: 1.7;
-      font-weight: 300;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.6s forwards;
-    }
+    #score-tracker{position:fixed;top:1.5rem;right:1.5rem;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:0.5rem 0.9rem;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:var(--muted);z-index:200;opacity:0;transition:opacity 0.4s;}
+    #score-tracker.visible{opacity:1;}
+    #score-tracker span{color:var(--gold);}
 
-    .scroll-hint {
-      position: absolute;
-      bottom: 3rem; left: 8vw;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      color: var(--muted);
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      opacity: 0;
-      animation: fadeUp 0.8s 1s forwards;
-    }
+    .scrolly-block{display:flex;align-items:flex-start;padding:0 4vw;gap:3vw;margin-bottom:8vw;}
+    .sticky-graphic-shell{width:58%;position:sticky;top:0;height:100vh;display:flex;align-items:center;padding:2rem 0;}
+    .chart-wrapper-shell{width:100%;height:80vh;background:var(--card);border-radius:16px;border:1px solid var(--border);position:relative;overflow:hidden;}
+    .chart-wrapper-shell::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--gold));border-radius:16px 16px 0 0;}
+    .steps-shell{width:42%;padding:60vh 0 40vh;}
+    .step-static{padding:2rem;background:var(--card);border-radius:12px;border:1px solid var(--border);border-left:3px solid var(--gold);}
+    .step-number-s{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--red);line-height:1;margin-bottom:0.25rem;}
+    .step-static h2{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.05em;color:var(--text);margin-bottom:0.75rem;}
+    .step-static p{font-size:0.93rem;line-height:1.8;color:var(--muted);font-weight:300;margin-bottom:0.75rem;}
+    .step-static p strong{color:var(--peach);font-weight:500;}
+    .placeholder-panel{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;text-align:center;padding:2rem;}
+    .placeholder-icon{font-size:3rem;opacity:0.4;}
+    .placeholder-label{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.1em;color:var(--muted);opacity:0.5;}
+    .placeholder-sub{font-size:0.78rem;color:var(--border);letter-spacing:0.05em;max-width:260px;line-height:1.6;}
+    .placeholder-badge{margin-top:0.5rem;background:rgba(201,56,113,0.12);border:1px dashed var(--red);border-radius:20px;padding:0.35rem 0.9rem;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);}
+    .coming-soon{margin-top:0.75rem;padding:0.65rem 1rem;background:rgba(201,56,113,0.06);border:1px dashed rgba(201,56,113,0.35);border-radius:8px;font-size:0.78rem;color:var(--red);letter-spacing:0.05em;}
 
-    .scroll-hint::before {
-      content: '';
-      display: block;
-      width: 40px; height: 1px;
-      background: var(--red);
-    }
+    #scrolly{display:flex;align-items:flex-start;padding:0 4vw;gap:3vw;}
+    #sticky-graphic{position:sticky;top:0;width:58%;height:100vh;display:flex;flex-direction:column;justify-content:center;padding:2rem 0;}
+    #chart-wrapper{background:var(--card);border-radius:16px;border:1px solid var(--border);padding:1.5rem 1rem 1rem;height:80vh;position:relative;overflow:hidden;transition:opacity 0.2s ease;}
+    #chart-wrapper.fading{opacity:0;}
+    #chart-wrapper::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--gold));border-radius:16px 16px 0 0;}
+    #chart{width:100%;height:100%;}
+    #legend{display:flex;gap:1.5rem;margin-top:0.75rem;padding-left:1rem;min-height:1.2rem;}
+    .legend-item{display:flex;align-items:center;gap:0.4rem;font-size:0.72rem;color:var(--muted);letter-spacing:0.05em;}
+    .legend-swatch{width:10px;height:10px;border-radius:2px;}
 
-    #progress {
-      position: fixed;
-      right: 1.5rem; top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      z-index: 100;
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
+    #quiz-overlay{position:absolute;inset:0;background:rgba(8,13,30,0.96);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;z-index:10;opacity:0;pointer-events:none;transition:opacity 0.4s;}
+    #quiz-overlay.visible{opacity:1;pointer-events:all;}
+    .quiz-eyebrow{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--red);margin-bottom:1rem;}
+    .quiz-question{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.3rem,2vw,1.9rem);letter-spacing:0.04em;color:var(--text);text-align:center;line-height:1.15;margin-bottom:2rem;max-width:480px;}
+    .quiz-options{display:flex;flex-direction:column;gap:0.75rem;width:100%;max-width:420px;}
+    .quiz-btn{background:var(--card2);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.92rem;padding:0.85rem 1.2rem;cursor:pointer;text-align:left;transition:border-color 0.2s,background 0.2s,transform 0.15s;display:flex;align-items:center;gap:0.75rem;}
+    .quiz-btn:hover:not(:disabled){border-color:var(--gold);background:#2a1f6e;transform:translateX(4px);}
+    .quiz-btn .btn-letter{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--muted);min-width:1.4rem;transition:color 0.2s;}
+    .quiz-btn:hover:not(:disabled) .btn-letter{color:var(--gold);}
+    .quiz-btn.correct{border-color:#4ade80;background:rgba(74,222,128,0.1);}
+    .quiz-btn.wrong{border-color:var(--red);background:rgba(201,56,113,0.1);opacity:0.6;}
+    .quiz-btn.reveal-correct{border-color:#4ade80;background:rgba(74,222,128,0.08);}
+    .quiz-feedback{margin-top:1.25rem;font-size:0.88rem;color:var(--muted);text-align:center;max-width:380px;line-height:1.6;min-height:2.5rem;opacity:0;transition:opacity 0.4s;}
+    .quiz-feedback.visible{opacity:1;}
+    .quiz-reveal-btn{margin-top:1.25rem;background:var(--red);border:none;border-radius:8px;color:white;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;padding:0.7rem 2rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity 0.4s,background 0.2s;}
+    .quiz-reveal-btn.visible{opacity:1;pointer-events:all;}
+    .quiz-reveal-btn:hover{background:#a02d5e;}
 
-    #progress.visible { opacity: 1; }
+    #steps{width:42%;padding:60vh 0 50vh;}
+    .step{margin-bottom:75vh;padding:2rem;background:var(--card);border-radius:12px;border:1px solid var(--border);border-left:3px solid var(--red);opacity:0.2;transform:translateX(12px);transition:opacity 0.5s,transform 0.5s,border-color 0.4s;}
+    .step.is-active{opacity:1;transform:translateX(0);border-left-color:var(--gold);}
+    .step-number{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--border);line-height:1;margin-bottom:0.25rem;transition:color 0.4s;}
+    .step.is-active .step-number{color:var(--red);}
+    .step h2{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.05em;color:var(--text);margin-bottom:0.75rem;}
+    .step p{font-size:0.93rem;line-height:1.8;color:var(--muted);font-weight:300;margin-bottom:0.75rem;}
+    .step p strong{color:var(--peach);font-weight:500;}
+    .step p em{color:var(--text);font-style:italic;}
+    .step .insight{margin-top:0.6rem;padding:0.75rem 1rem;background:var(--card2);border-radius:8px;font-size:0.85rem;color:var(--gold);border-left:2px solid var(--gold);}
+    .step .coming-soon{margin-top:0.75rem;padding:0.65rem 1rem;background:rgba(201,56,113,0.06);border:1px dashed rgba(201,56,113,0.3);border-radius:8px;font-size:0.78rem;color:var(--red);letter-spacing:0.05em;}
+    .step .question-tease{margin-top:1rem;padding:0.9rem 1rem;background:rgba(201,56,113,0.06);border:1px dashed var(--red);border-radius:8px;font-size:0.82rem;color:var(--red);line-height:1.5;font-style:italic;}
 
-    .progress-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--border);
-      border: 1px solid var(--muted);
-      cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
-    }
+    #outro{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6rem 8vw;background:radial-gradient(ellipse at 50% 0%,rgba(248,227,33,0.06) 0%,transparent 60%),radial-gradient(ellipse at 80% 100%,rgba(201,56,113,0.1) 0%,transparent 50%),var(--bg);position:relative;overflow:hidden;}
+    #outro::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 0%,rgba(8,13,30,0.6) 100%);pointer-events:none;}
+    .outro-inner{position:relative;z-index:1;max-width:720px;}
+    .outro-eyebrow{font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--red);margin-bottom:1.5rem;}
+    .outro-hed{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,5rem);letter-spacing:0.04em;color:var(--text);line-height:1;margin-bottom:2rem;}
+    .outro-hed span{color:var(--gold);}
+    .outro-body{font-size:1.05rem;line-height:1.9;color:var(--muted);font-weight:300;margin-bottom:1.5rem;text-align:left;}
+    .outro-body strong{color:var(--text);font-weight:500;}
+    .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2.5rem 0;text-align:left;}
+    .summary-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;}
+    .summary-card .sc-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+    .summary-card .sc-title{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.08em;color:var(--gold);margin-bottom:0.4rem;}
+    .summary-card .sc-body{font-size:0.85rem;color:var(--muted);line-height:1.6;font-weight:300;}
+    .outro-score{margin-top:1.5rem;padding:1.25rem 2rem;background:var(--card2);border:1px solid var(--gold);border-radius:12px;display:inline-block;}
+    .outro-score .os-label{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:0.25rem;}
+    .outro-score .os-val{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.05em;color:var(--gold);}
+    .outro-thanks{margin-top:3rem;font-size:0.85rem;color:var(--border);letter-spacing:0.1em;text-transform:uppercase;line-height:1.8;}
+    .outro-thanks strong{color:var(--muted);}
 
-    .progress-dot.active {
-      background: var(--gold);
-      transform: scale(1.5);
-      border-color: var(--gold);
-    }
+    .x-axis path,.x-axis line,.y-axis path,.y-axis line{stroke:var(--border);}
+    .tick text{fill:var(--muted)!important;font-family:'DM Sans',sans-serif;font-size:11px;}
+    .chart-title-text{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;fill:var(--text);letter-spacing:0.05em;}
+    .chart-sub-text{font-family:'DM Sans',sans-serif;font-size:0.7rem;fill:var(--muted);}
+    #tooltip{position:fixed;background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.9rem;font-size:0.8rem;color:var(--text);pointer-events:none;opacity:0;transition:opacity 0.15s;z-index:1000;max-width:200px;line-height:1.6;}
+    #tooltip strong{color:var(--gold);display:block;margin-bottom:2px;}
 
-    #scrolly {
-      display: flex;
-      align-items: flex-start;
-      padding: 0 4vw;
-      gap: 3vw;
-    }
-
-    #sticky-graphic {
-      position: sticky;
-      top: 0;
-      width: 58%;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 2rem 0;
-    }
-
-    #chart-wrapper {
-      background: var(--card);
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      padding: 1.5rem 1rem 1rem 1rem;
-      height: 80vh;
-      position: relative;
-      overflow: hidden;
-      transition: opacity 0.2s ease;
-    }
-
-    #chart-wrapper.fading { opacity: 0; }
-
-    #chart-wrapper::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--red), var(--gold));
-      border-radius: 16px 16px 0 0;
-    }
-
-    #chart { width: 100%; height: 100%; }
-
-    #legend {
-      display: flex;
-      gap: 1.5rem;
-      margin-top: 0.75rem;
-      padding-left: 1rem;
-      min-height: 1.2rem;
-    }
-
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.72rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-
-    .legend-swatch {
-      width: 10px; height: 10px;
-      border-radius: 2px;
-    }
-
-    #steps {
-      width: 42%;
-      padding: 60vh 0 50vh 0;
-    }
-
-    .step {
-      margin-bottom: 75vh;
-      padding: 2rem;
-      background: var(--card);
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--red);
-      opacity: 0.25;
-      transform: translateX(12px);
-      transition: opacity 0.5s, transform 0.5s, border-color 0.4s;
-    }
-
-    .step.is-active {
-      opacity: 1;
-      transform: translateX(0);
-      border-left-color: var(--gold);
-    }
-
-    .step-number {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 3rem;
-      color: var(--border);
-      line-height: 1;
-      margin-bottom: 0.25rem;
-      transition: color 0.4s;
-    }
-
-    .step.is-active .step-number { color: var(--red); }
-
-    .step h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.6rem;
-      letter-spacing: 0.05em;
-      color: var(--text);
-      margin-bottom: 0.75rem;
-    }
-
-    .step p {
-      font-size: 0.95rem;
-      line-height: 1.75;
-      color: var(--muted);
-      font-weight: 300;
-    }
-
-    .step .insight {
-      margin-top: 1rem;
-      padding: 0.75rem 1rem;
-      background: var(--card2);
-      border-radius: 8px;
-      font-size: 0.85rem;
-      color: var(--gold);
-      border-left: 2px solid var(--gold);
-    }
-
-    .x-axis path, .x-axis line,
-    .y-axis path, .y-axis line { stroke: var(--border); }
-
-    .tick text {
-      fill: var(--muted) !important;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-    }
-
-    .chart-title-text {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.1rem;
-      fill: var(--text);
-      letter-spacing: 0.05em;
-    }
-
-    .chart-sub-text {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.7rem;
-      fill: var(--muted);
-    }
-
-    #tooltip {
-      position: fixed;
-      background: var(--card2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0.6rem 0.9rem;
-      font-size: 0.8rem;
-      color: var(--text);
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.15s;
-      z-index: 1000;
-      max-width: 200px;
-      line-height: 1.6;
-    }
-
-    #tooltip strong {
-      color: var(--gold);
-      display: block;
-      margin-bottom: 2px;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
   </style>
 </head>
 <body>
 
 <div id="tooltip"></div>
+<div id="score-tracker">Score: <span id="score-val">0</span> / <span id="score-total">0</span></div>
 
 <nav id="progress">
   <div class="progress-dot" data-step="0"></div>
   <div class="progress-dot" data-step="1"></div>
   <div class="progress-dot" data-step="2"></div>
   <div class="progress-dot" data-step="3"></div>
+  <div class="progress-dot" data-step="4"></div>
 </nav>
 
 <section id="intro">
   <h1>The <span>Golden</span><br>Age of<br>Anime</h1>
-  <p>Six decades of animation. Thousands of studios. Millions of fans rating every show. But when did anime actually peak?</p>
-  <p>Bhavya, Daniel, Kathy, Leah, Nirupam </p>
+  <div class="intro-body">
+    <p>Anime is one of the most popular forms of entertainment in today's world. According to New York Times, North America is the largest market outside Asia that support the Japanese animation industry. Many anime watchers like to track their watchlists on sites like MyAnimeList and rank their favorite shows.</p>
+    <p>Our team proposes one large question: What actually makes anime <em>popular</em>? Is it the genre? The studio behind it? How long it runs? Where the story comes from? What does the data say?</p>
+    <p>We dug through a dataset of anime titles and viewer ratings to find out. As you scroll through, we'll ask you to guess before each reveal. Let's see how well you know your anime!</p>
+    <div class="intro-question">Do you know what makes an anime popular?</div>
+    <div class="byline">Bhavya &nbsp;·&nbsp; Daniel &nbsp;·&nbsp; Kathy &nbsp;·&nbsp; Leah &nbsp;·&nbsp; Nirupam</div>
+  </div>
+  <div class="scroll-hint">scroll to find out</div>
+</section>
 
+<div class="narr-section">
+  <div class="narr-eyebrow">Chapter 1</div>
+  <h2 class="narr-hed">Let's Talk About <span>Genre</span></h2>
+  <p>A lot of forms of media contain different genres, with anime being no exception. Each genre offers a unique experience to its audience and can cater to different tastes and preferences.</p>
+  <p>Does the general population prefer certain genres over others?</p>
+  <div class="narr-pull">Does the most popular genre make the best anime?</div>
+  <p>Let's see what the genre data reveals about viewer preferences.</p>
+  <div class="narr-scroll-cue">scroll to explore the data</div>
+</div>
+
+<section id="scrolly-genre" class="scrolly-block">
+  <div class="sticky-graphic-shell">
+    <div class="chart-wrapper-shell">
+      <div class="placeholder-panel">
+        <div class="placeholder-label">Genre Breakdown</div>
+        <div class="placeholder-sub">Average viewer score and total count by anime genre</div>
+        <div class="placeholder-badge">Chart coming soon</div>
+      </div>
+    </div>
+  </div>
+  <div class="steps-shell">
+    <div class="step-static">
+      <div class="step-number-s">01</div>
+      <h2>Genre &amp; Popularity</h2>
+      <p>Does the genre an anime belongs to predict how well it will be received?</p>
+      <p><strong>Action and adventure</strong> frequently appear in a lot of anime titles. However, are these the most popular? Or are they simply the most produced?</p>
+      <div class="coming-soon">Genre chart will soonnn</div>
+    </div>
+  </div>
+</section>
+
+=<div class="narr-section">
+  <div class="narr-eyebrow">Chapter 2</div>
+  <h2 class="narr-hed">Who Is <span>Anime For?</span></h2>
+  <p>Now, let's talk about the demographics behind anime. Shows are produced with specific demographic targets in mind, some including <strong>Shounen</strong> (young boys), <strong>Shoujo</strong> (young girls), <strong>Seinen</strong> (adult men), and <strong>Josei</strong> (adult women). These categories depict the way an anime is tailored to its intended audience.</p>
+  <div class="narr-pull">What do you think the most popular demographic is? Does this produce the highest-rated anime?</div>
+  <div class="narr-scroll-cue">scroll to explore the data</div>
+</div>
+
+<section id="scrolly-demo" class="scrolly-block">
+  <div class="sticky-graphic-shell">
+    <div class="chart-wrapper-shell">
+      <div class="placeholder-panel">
+        <div class="placeholder-label">Demographics Breakdown</div>
+        <div class="placeholder-sub">Average score by target demographic</div>
+        <div class="placeholder-badge">Chart coming sooooonn</div>
+      </div>
+    </div>
+  </div>
+  <div class="steps-shell">
+    <div class="step-static">
+      <div class="step-number-s">02</div>
+      <h2>Demographics &amp; Ratings</h2>
+      <p>The demographic a show is produced for lays out a lot of the foundations of an anime. It can determine the pacing of the anime, how much action, romance, and what the stylistic choices are. However, does this also determine its popularity and how well it scores?</p>
+      <div class="coming-soon">Demographics chart soooooonnn/div>
+    </div>
+  </div>
 </section>
 
 <section id="scrolly">
   <div id="sticky-graphic">
     <div id="chart-wrapper">
       <div id="chart"></div>
+      <div id="quiz-overlay">
+        <div class="quiz-eyebrow">Before we reveal the data, try to take a guess</div>
+        <div class="quiz-question" id="quiz-q"></div>
+        <div class="quiz-options" id="quiz-opts"></div>
+        <div class="quiz-feedback" id="quiz-feedback"></div>
+        <button class="quiz-reveal-btn" id="quiz-reveal-btn">Reveal the answer &rarr;</button>
+      </div>
     </div>
     <div id="legend"></div>
   </div>
 
   <div id="steps">
+
     <div class="step" data-step="0">
-      <div class="step-number">01</div>
-      <h2>The Flood</h2>
-      <p>Since the 1960s, anime production has grown at an extraordinary pace. What started as a handful of TV shows per year became hundreds by the 2010s, an industry-wide explosion driven by streaming, global fandom, and lower production barriers.</p>
+      <div class="step-number">03</div>
+      <h2>The Anime Flood</h2>
+      <p>Does it matter whether an anime is adapted from manga, a light novel, a game, or made from scratch? The data says yes... manga and light novel adaptations consistently score the highest, likely because the source material has already been proven popular with fans before the anime even airs.</p>
       <div class="insight">Peak year: 2023 with 233 new TV anime</div>
+      <div class="question-tease">How many anime do you think aired in 2023?</div>
     </div>
+
     <div class="step" data-step="1">
-      <div class="step-number">02</div>
+      <div class="step-number">04</div>
       <h2>The Quality Question</h2>
       <p>More anime inevitably means more filler, but surprisingly, average scores have held steady or even improved in recent years. Early anime from the 60s and 70s scores lower, possibly due to fewer ratings and different storytelling norms.</p>
       <div class="insight">Scores have trended upward since the early 2000s</div>
+      <div class="question-tease">Did scores go up or down as production exploded?</div>
     </div>
+
     <div class="step" data-step="2">
-      <div class="step-number">03</div>
+      <div class="step-number">05</div>
+      <h2>Source Material</h2>
+      <p>Does it matter whether an anime is adapted from manga, a light novel, a game, or made from scratch? The data says yes... manga and light novel adaptations consistently score the highest, likely because the source material has already been proven popular with fans before the anime even airs.</p>
+      <div class="insight">Manga &amp; light novels consistently outscore original anime</div>
+      <div class="question-tease">Which source type do you think wins?</div>
+    </div>
+
+    <div class="step" data-step="3">
+      <div class="step-number">06</div>
       <h2>The Golden Studios</h2>
       <p>Which studio reigns supreme in terms of viewer rating? Does more shows/ more legacy mean better reviews?</p>
       <div class="insight">Only studios with 10+ shows qualify</div>
+      <div class="question-tease">Does making more anime make you better at it?</div>
     </div>
-    <div class="step" data-step="3">
-      <div class="step-number">04</div>
-      <h2>Source Material</h2>
-      <p>Does it matter whether an anime is adapted from manga, a light novel, a game, or made from scratch? The data says yes... manga and light novel adaptations consistently score the highest, likely because the source material has already been proven popular with fans before the anime even airs.</p>
-      <div class="insight">Manga & light novels top the chart, games and originals lag behind</div>
+
+    <div class="step" data-step="4">
+      <div class="step-number">07</div>
+      <h2>The Verdict</h2>
+      <p>Six decades of data can reveal a lot about anime to this day.</p>
+      <p>What do you think? Are we living in the golden age of anime?</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="outro">
+  <div class="outro-inner">
+    <div class="outro-eyebrow">Conclusion</div>
+    <h2 class="outro-hed">The <span>Golden</span><br>Age of Anime</h2>
+    <p class="outro-body">After exploring genre, demographics, source material, studios, and the all-time rankings, we've discovered that popularity does have correlations to the factors that we studied.</p>
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="sc-title">Proven Source Material</div>
+        <div class="sc-body">Manga and light novel adaptations consistently outscore original anime.</div>
+      </div>
+      <div class="summary-card">
+        <div class="sc-title">Studios</div>
+        <div class="sc-body">The best-rated studios aren't always the biggest.</div>
+      </div>
+      <div class="summary-card">
+        <div class="sc-title">Genre &amp; Demographics</div>
+        <div class="sc-body">Genre matters. *Add analysis on demographics*</div>
+      </div>
+      <div class="summary-card">
+        <div class="sc-title">Placeholder for results of other graphs</div>
+        <div class="sc-body"> add analysis here once we finish all of our graphs</div>
+      </div>
+    </div>
+    <p class="outro-body">Here we should add an outro message summarizing our key takeaways.</p>
+    <div class="outro-score">
+      <div class="os-label">Your quiz score</div>
+      <div class="os-val" id="outro-score-val">— / —</div>
     </div>
   </div>
 </section>
@@ -379,425 +340,292 @@
 <script src="https://unpkg.com/d3@7"></script>
 <script src="https://unpkg.com/scrollama"></script>
 <script>
-  let data = {};
-  let currentStep = -1;
-  let isFirstLoad = true;
+  const quizzes = [
+    {
+      question: "How many new TV anime aired in the most recent peak year?",
+      options: ["Around 50", "Around 100", "Around 150", "Over 200"],
+      correct: 3,
+      feedback: {
+        right: "Correct! 233 anime aired in 2023 alone.",
+        wrong: "Not quite. The answer is over 200. 233 shows aired in 2023, a huge number of shows."
+      }
+    },
+    {
+      question: "As anime flooded the market, what happened to average viewer scores?",
+      options: ["They dropped significantly", "They stayed roughly the same", "They actually improved"],
+      correct: 2,
+      feedback: {
+        right: "Exactly right! More doesn't mean worse. Average MAL scores have gone upward since the early 2000s.",
+        wrong: "Surprisingly, scores improved. Despite the flood of content, average ratings have trended upward since 2000."
+      }
+    },
+    {
+      question: "Which source material produces the highest-rated anime?",
+      options: ["Original anime — the most creative", "Video game adaptations", "Manga & light novel adaptations", "Visual novel adaptations"],
+      correct: 2,
+      feedback: {
+        right: "Correct! Manga and light novels top the chart",
+        wrong: "It's manga and light novels!"
+      }
+    },
+    {
+      question: "Do studios that produce more anime tend to earn higher average ratings?",
+      options: ["Yes, experience makes them better", "No clear pattern, it varies wildly", "No, bigger studios actually score lower"],
+      correct: 1,
+      feedback: {
+        right: "Exactly. The bubble chart shows no clean trend..",
+        wrong: "It's actually messier than that. There's no clear relationship."
+      }
+    },
+    {
+      question: "So, are we living in anime's golden age right now?",
+      options: ["No, the golden age was the 90s/2000s", "Yes, it's happening now!!"],
+      correct: 1,
+      feedback: {
+        right: "That's what the data says!",
+        wrong: "The data disagrees! Output and quality metrics both point to the current era as anime's strongest yet."
+      }
+    }
+  ];
+
+  let data = {}, currentStep = -1, isFirstLoad = true;
+  let answered = new Array(quizzes.length).fill(false);
+  let chartReady = new Array(quizzes.length).fill(false);
+  let score = 0, scoreTotal = 0;
+
   const tooltip = document.getElementById('tooltip');
   const chartWrapper = document.getElementById('chart-wrapper');
+  const quizOverlay = document.getElementById('quiz-overlay');
+  const quizQ = document.getElementById('quiz-q');
+  const quizOpts = document.getElementById('quiz-opts');
+  const quizFeedback = document.getElementById('quiz-feedback');
+  const quizRevealBtn = document.getElementById('quiz-reveal-btn');
+  const scoreValEl = document.getElementById('score-val');
+  const scoreTotalEl = document.getElementById('score-total');
+  const scoreTracker = document.getElementById('score-tracker');
+  const outroScoreEl = document.getElementById('outro-score-val');
 
-  //AI helped here build SVG 
-  const margin = { top: 56, right: 24, bottom: 48, left: 100 };
+  const margin = {top:56,right:24,bottom:48,left:100};
   const chartEl = document.getElementById('chart');
   const svg = d3.select('#chart').append('svg').attr('width','100%').attr('height','100%');
-  const yLabelG = svg.append('g');
-  const xLabelG = svg.append('g');
-  const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+  const yLabelG = svg.append('g'), xLabelG = svg.append('g');
+  const g = svg.append('g').attr('transform',`translate(${margin.left},${margin.top})`);
   const xAxisG = g.append('g').attr('class','x-axis');
   const yAxisG = g.append('g').attr('class','y-axis');
 
-  function showTooltip(html, event) {
-    tooltip.innerHTML = html;
-    tooltip.style.opacity = 1;
-    tooltip.style.left = (event.clientX + 14) + 'px';
-    tooltip.style.top  = (event.clientY - 28) + 'px';
-  }
-  function hideTooltip() { tooltip.style.opacity = 0; }
-
-  function setChartTitle(title, sub) {
-    svg.selectAll('.chart-title-text, .chart-sub-text').remove();
-    svg.append('text').attr('class','chart-title-text').attr('x', margin.left).attr('y', 22).text(title);
-    svg.append('text').attr('class','chart-sub-text').attr('x', margin.left).attr('y', 38).text(sub);
-  }
-
-  function setXLabel(label) {
-  xLabelG.selectAll('*').remove();
-  if (!label) return;
-  const W = chartEl.clientWidth - margin.left - margin.right;
-  const H = chartEl.clientHeight - margin.top - margin.bottom;
-  xLabelG.append('text')
-    .attr('transform', `translate(${margin.left + W/2}, ${margin.top + H + 40})`)
-    .attr('text-anchor','middle')
-    .attr('font-family','DM Sans, sans-serif')
-    .attr('font-size','10px')
-    .attr('fill','#a899cc')
-    .attr('letter-spacing','0.08em')
-    .text(label.toUpperCase());
-}
-
-  function setYLabel(label) {
-    yLabelG.selectAll('*').remove();
-    if (!label) return;
-    const H = chartEl.clientHeight - margin.top - margin.bottom;
-    yLabelG.append('text')
-      .attr('transform', `translate(14,${margin.top + H/2}) rotate(-90)`)
-      .attr('text-anchor','middle')
-      .attr('font-family','DM Sans, sans-serif')
-      .attr('font-size','10px')
-      .attr('fill','#a899cc')
-      .attr('letter-spacing','0.08em')
-      .text(label.toUpperCase());
-  }
-
-  
-
-  function setLegend(items) {
-    document.getElementById('legend').innerHTML = items.map(i =>
-      `<div class="legend-item"><div class="legend-swatch" style="background:${i.color}"></div><span>${i.label}</span></div>`
-    ).join('');
-  }
-
-  function updateProgress(step) {
-    document.querySelectorAll('.progress-dot').forEach((d,i) => d.classList.toggle('active', i === step));
-  }
-
-  document.querySelectorAll('.progress-dot').forEach(dot => {
-    dot.addEventListener('click', () => {
-      document.querySelectorAll('.step')[+dot.dataset.step].scrollIntoView({ behavior:'smooth', block:'center' });
-    });
-  });
+  function showTooltip(html,e){tooltip.innerHTML=html;tooltip.style.opacity=1;tooltip.style.left=(e.clientX+14)+'px';tooltip.style.top=(e.clientY-28)+'px';}
+  function hideTooltip(){tooltip.style.opacity=0;}
+  function setChartTitle(t,s){svg.selectAll('.chart-title-text,.chart-sub-text').remove();svg.append('text').attr('class','chart-title-text').attr('x',margin.left).attr('y',22).text(t);svg.append('text').attr('class','chart-sub-text').attr('x',margin.left).attr('y',38).text(s);}
+  function setXLabel(label){xLabelG.selectAll('*').remove();if(!label)return;const W=chartEl.clientWidth-margin.left-margin.right,H=chartEl.clientHeight-margin.top-margin.bottom;xLabelG.append('text').attr('transform',`translate(${margin.left+W/2},${margin.top+H+40})`).attr('text-anchor','middle').attr('font-family','DM Sans,sans-serif').attr('font-size','10px').attr('fill','#a899cc').attr('letter-spacing','0.08em').text(label.toUpperCase());}
+  function setYLabel(label){yLabelG.selectAll('*').remove();if(!label)return;const H=chartEl.clientHeight-margin.top-margin.bottom;yLabelG.append('text').attr('transform',`translate(14,${margin.top+H/2}) rotate(-90)`).attr('text-anchor','middle').attr('font-family','DM Sans,sans-serif').attr('font-size','10px').attr('fill','#a899cc').attr('letter-spacing','0.08em').text(label.toUpperCase());}
+  function setLegend(items){document.getElementById('legend').innerHTML=items.map(i=>`<div class="legend-item"><div class="legend-swatch" style="background:${i.color}"></div><span>${i.label}</span></div>`).join('');}
+  function updateProgress(step){document.querySelectorAll('.progress-dot').forEach((d,i)=>d.classList.toggle('active',i===step));}
+  document.querySelectorAll('.progress-dot').forEach(dot=>{dot.addEventListener('click',()=>document.querySelectorAll('.step')[+dot.dataset.step].scrollIntoView({behavior:'smooth',block:'center'}));});
 
   const progressEl = document.getElementById('progress');
-  new IntersectionObserver(entries => {
-    progressEl.classList.toggle('visible', entries[0].isIntersecting);
-  }, { threshold: 0.1 }).observe(document.getElementById('scrolly'));
+  new IntersectionObserver(entries=>{const vis=entries[0].isIntersecting;progressEl.classList.toggle('visible',vis);scoreTracker.classList.toggle('visible',vis);},{threshold:0.1}).observe(document.getElementById('scrolly'));
+  new IntersectionObserver(entries=>{if(entries[0].isIntersecting){outroScoreEl.textContent=scoreTotal>0?`${score} / ${scoreTotal}`:'— / —';}},{threshold:0.3}).observe(document.getElementById('outro'));
 
+  function showQuiz(idx){
+    const q=quizzes[idx];
+    quizQ.textContent=q.question;
+    quizFeedback.textContent='';
+    quizFeedback.classList.remove('visible');
+    quizRevealBtn.classList.remove('visible');
+    quizOpts.innerHTML='';
+    ['A','B','C','D'].slice(0,q.options.length).forEach((letter,i)=>{
+      const btn=document.createElement('button');
+      btn.className='quiz-btn';
+      btn.innerHTML=`<span class="btn-letter">${letter}</span><span>${q.options[i]}</span>`;
+      btn.addEventListener('click',()=>handleAnswer(idx,i));
+      quizOpts.appendChild(btn);
+    });
+    quizOverlay.classList.add('visible');
+  }
 
-  function drawScene(step) {
-    if (step === currentStep) return;
-    currentStep = step;
-    updateProgress(step);
+  function handleAnswer(idx,chosen){
+    if(answered[idx])return;
+    answered[idx]=true;scoreTotal++;scoreTotalEl.textContent=scoreTotal;
+    const q=quizzes[idx],correct=chosen===q.correct;
+    const btns=quizOpts.querySelectorAll('.quiz-btn');
+    btns.forEach((b,i)=>{b.disabled=true;if(i===q.correct)b.classList.add(correct?'correct':'reveal-correct');else if(i===chosen&&!correct)b.classList.add('wrong');});
+    if(correct){score++;scoreValEl.textContent=score;quizFeedback.innerHTML=`<span style="color:#4ade80">✓ ${q.feedback.right}</span>`;}
+    else{quizFeedback.innerHTML=`<span style="color:var(--red)">✗ ${q.feedback.wrong}</span>`;}
+    quizFeedback.classList.add('visible');
+    quizRevealBtn.classList.add('visible');
+  }
 
-    // fade out, redraw, fade back in
+  quizRevealBtn.addEventListener('click',()=>{
+    quizOverlay.classList.remove('visible');
+    chartReady[currentStep]=true;
     chartWrapper.classList.add('fading');
-    setTimeout(() => {
-      _draw(step);
-      chartWrapper.classList.remove('fading');
-    }, 220);
-  }
-
-  function _draw(step) {
-    const W = chartEl.clientWidth  - margin.left - margin.right;
-    const H = chartEl.clientHeight - margin.top  - margin.bottom;
-    if (step === 0) drawVolume(W, H);
-    if (step === 1) drawScoreOverlay(W, H);
-    if (step === 2) drawStudios(W, H);
-    if (step === 3) drawSource(W, H);
-  }
-
-  // vis 1: VOLUME
-  function drawVolume(W, H) {
-    setChartTitle('ANIME PRODUCTION OVER TIME', 'Number of TV anime per year since 1961');
-    setLegend([{ color:'#c93871', label:'TV anime count per year' }]);
-    setYLabel('Number of shows');
-    setXLabel('Year');
-
-    const years = data.by_year;
-    g.selectAll('.dot,.dot-line,.annotation,.rank-label,.bar').remove();
-    xAxisG.selectAll('*').remove();
-    yAxisG.selectAll('*').remove();
-
-    const x = d3.scaleBand().domain(years.map(d=>d.Year)).range([0,W]).padding(0.15);
-    const y = d3.scaleLinear().domain([0, d3.max(years,d=>d.count)]).nice().range([H,0]);
-
-    xAxisG.attr('transform',`translate(0,${H})`)
-      .call(d3.axisBottom(x).tickValues(x.domain().filter(d=>d%10===0)))
-      .selectAll('text').attr('fill','#a899cc');
-    yAxisG.call(d3.axisLeft(y).ticks(6)).selectAll('text').attr('fill','#a899cc');
-
-    const stagger = isFirstLoad;
-    isFirstLoad = false;
-
-    g.selectAll('.bar').data(years, d=>d.Year).enter()
-      .append('rect').attr('class','bar')
-      .attr('x', d=>x(d.Year)).attr('width', x.bandwidth())
-      .attr('y', H).attr('height', 0)
-      .attr('fill','#c93871').attr('rx',2).attr('cursor','pointer')
-      .on('mousemove', function(event,d) {
-        showTooltip(`<strong>${d.Year}</strong>${d.count} anime aired`, event);
-        g.selectAll('.bar').transition().duration(150).attr('opacity', dd=>dd===d?1:0.25);
-      })
-      .on('mouseleave', function() {
-        hideTooltip();
-        g.selectAll('.bar').transition().duration(150).attr('opacity',1);
-      })
-      .transition().duration(stagger ? 800 : 600).ease(d3.easeCubicOut)
-      .delay((d,i) => stagger ? i*7 : 0)
-      .attr('y', d=>y(d.count)).attr('height', d=>H-y(d.count));
-
-    //annotation
-    const peak = years.reduce((a,b)=>b.count>a.count?b:a);
-    const delay = stagger ? years.length*7+600 : 700;
-    setTimeout(() => {
-      g.selectAll('.annotation').remove();
-      const ax = x(peak.Year)+x.bandwidth()/2;
-      const ay = y(peak.count)-10;
-      const ann = g.append('g').attr('class','annotation').attr('opacity',0);
-      ann.append('line').attr('x1',ax).attr('x2',ax).attr('y1',ay).attr('y2',ay-28)
-        .attr('stroke','#f8e321').attr('stroke-width',1.5).attr('stroke-dasharray','3,2');
-      ann.append('rect').attr('x',ax-50).attr('y',ay-52).attr('width',100).attr('height',22)
-        .attr('rx',4).attr('fill','#1f1558').attr('stroke','#f8e321').attr('stroke-width',1);
-      ann.append('text').attr('x',ax).attr('y',ay-36).attr('text-anchor','middle')
-        .attr('font-family','DM Sans,sans-serif').attr('font-size','10px').attr('fill','#f8e321')
-        .text(`${peak.count} shows (${peak.Year})`);
-      ann.transition().duration(400).attr('opacity',1);
-    }, delay);
-  }
-
-  //vis 2: SCORE OVERLAY
-  function drawScoreOverlay(W, H) {
-  setChartTitle('HAS QUALITY KEPT UP?', 'Average MAL score per year since 1961');
-  setLegend([{ color:'#c93871', label:'Average score per year' }]);
-  setYLabel('Average Score');
-
-  const years = data.by_year;
-  g.selectAll('.bar,.dot,.dot-line,.annotation,.rank-label,.score-label').remove();
-  xAxisG.selectAll('*').remove();
-  yAxisG.selectAll('*').remove();
-
-  const x = d3.scaleLinear()
-    .domain(d3.extent(years, d=>d.Year))
-    .range([0, W]);
-
-  const y = d3.scaleLinear()
-    .domain([5.5, d3.max(years, d=>d.avg_score) + 0.2]).nice()
-    .range([H, 0]);
-
-  xAxisG.attr('transform',`translate(0,${H})`)
-    .call(d3.axisBottom(x).tickFormat(d3.format('d')).ticks(8))
-    .selectAll('text').attr('fill','#a899cc');
-
-  yAxisG.call(d3.axisLeft(y).ticks(6))
-    .selectAll('text').attr('fill','#a899cc');
-
-  // Area fill under line
-  const area = d3.area()
-    .x(d => x(d.Year))
-    .y0(H)
-    .y1(d => y(d.avg_score))
-    .curve(d3.curveCatmullRom);
-
-  g.append('path').attr('class','dot')
-    .datum(years)
-    .attr('fill', '#c93871')
-    .attr('opacity', 0.15)
-    .attr('d', area);
-
-  // Line
-  const line = d3.line()
-    .x(d => x(d.Year))
-    .y(d => y(d.avg_score))
-    .curve(d3.curveCatmullRom);
-
-  const path = g.append('path').attr('class','dot')
-    .datum(years)
-    .attr('fill','none')
-    .attr('stroke','#c93871')
-    .attr('stroke-width', 2.5)
-    .attr('d', line);
-
-  // Animate line drawing
-  const totalLength = path.node().getTotalLength();
-  path
-    .attr('stroke-dasharray', `${totalLength} ${totalLength}`)
-    .attr('stroke-dashoffset', totalLength)
-    .transition().duration(1200).ease(d3.easeCubicOut)
-    .attr('stroke-dashoffset', 0);
-
-  // Hover dots
-  g.selectAll('.dot-circle').data(years).enter()
-    .append('circle').attr('class','dot dot-circle')
-    .attr('cx', d=>x(d.Year))
-    .attr('cy', d=>y(d.avg_score))
-    .attr('r', 3)
-    .attr('fill','#c93871')
-    .attr('cursor','pointer')
-    .on('mousemove', function(event,d) {
-      showTooltip(`<strong>${d.Year}</strong>Avg score: ${d.avg_score.toFixed(2)}<br>${d.count} anime`, event);
-      d3.select(this).attr('r', 6).attr('fill','#f8e321');
-    })
-    .on('mouseleave', function() {
-      hideTooltip();
-      d3.select(this).attr('r', 3).attr('fill','#c93871');
-    });    
-  }
-
-  // vis 3: STUDIOS
-  function drawStudios(W, H) {
-  setChartTitle('QUALITY VS. OUTPUT', 'Each dot is a studio — size = number of shows, position = avg score vs. total shows');
-  setLegend([{ color:'#FF89B5', label:'Studio — hover for details' }]);
-  setXLabel('Number of Shows');
-  setYLabel('Avg MAL Score');
-
-  const studios = data.by_studio;
-  g.selectAll('.bar,.dot,.dot-line,.annotation,.rank-label,.score-label').remove();
-  xAxisG.selectAll('*').remove();
-  yAxisG.selectAll('*').remove();
-
-  const x = d3.scaleLinear()
-    .domain([0, d3.max(studios, d=>d.count) * 1.15])
-    .range([0, W]);
-
-  const y = d3.scaleLinear()
-    .domain([d3.min(studios, d=>d.avg_score) - 0.1, d3.max(studios, d=>d.avg_score) + 0.1])
-    .range([H, 0]);
-
-  const r = d3.scaleSqrt()
-    .domain([0, d3.max(studios, d=>d.count)])
-    .range([6, 28]);
-
-  xAxisG.attr('transform',`translate(0,${H})`)
-    .call(d3.axisBottom(x).ticks(6))
-    .selectAll('text').attr('fill','#a899cc');
-
-  yAxisG.call(d3.axisLeft(y).ticks(6))
-    .selectAll('text').attr('fill','#a899cc');
-
-  // Gridlines
-  g.selectAll('.gridline-h').data(y.ticks(6)).enter()
-    .append('line').attr('class','dot gridline-h')
-    .attr('x1', 0).attr('x2', W)
-    .attr('y1', d=>y(d)).attr('y2', d=>y(d))
-    .attr('stroke','#312678').attr('stroke-width', 1)
-    .attr('stroke-dasharray','3,3');
-
-  // Dots
-  g.selectAll('.studio-dot').data(studios).enter()
-    .append('circle').attr('class','dot studio-dot')
-    .attr('cx', d=>x(d.count))
-    .attr('cy', H) // start at bottom, animate up
-    .attr('r', 0)
-    .attr('fill','#FF89B5')
-    .attr('opacity', 0.85)
-    .attr('stroke','#080d1e')
-    .attr('stroke-width', 1.5)
-    .attr('cursor','pointer')
-    .on('mousemove', function(event, d) {
-      showTooltip(`<strong>${d.Studios}</strong>Avg score: ${d.avg_score.toFixed(2)}<br>${d.count} shows`, event);
-      g.selectAll('.studio-dot').transition().duration(150)
-        .attr('opacity', dd=>dd===d ? 1 : 0.2);
-      g.selectAll('.studio-label').transition().duration(150)
-        .attr('opacity', dd=>dd===d ? 1 : 0);
-      d3.select(this).attr('stroke','#f8e321').attr('stroke-width', 2.5);
-    })
-    .on('mouseleave', function() {
-      hideTooltip();
-      g.selectAll('.studio-dot').transition().duration(150).attr('opacity', 0.85);
-      g.selectAll('.studio-label').transition().duration(150).attr('opacity', 1);
-      d3.select(this).attr('stroke','#080d1e').attr('stroke-width', 1.5);
-    })
-    .transition().duration(700).ease(d3.easeCubicOut)
-    .delay((d,i) => i * 60)
-    .attr('cy', d=>y(d.avg_score))
-    .attr('r', d=>r(d.count));
-
-  // Studio name labels
-  g.selectAll('.studio-label').data(studios).enter()
-    .append('text').attr('class','dot studio-label')
-    .attr('x', d=>x(d.count))
-    .attr('y', d=>y(d.avg_score) - r(d.count) - 5)
-    .attr('text-anchor','middle')
-    .attr('font-family','DM Sans, sans-serif')
-    .attr('font-size','9px')
-    .attr('fill','#f9e8d0')
-    .attr('opacity', 0)
-    .text(d=>d.Studios)
-    .transition().duration(400).delay((d,i)=>i*60+500)
-    .attr('opacity',1);
-}
-
-  
-
-  // vis 4: SOURCE
-  function drawSource(W, H) {
-    setChartTitle('DOES SOURCE MATERIAL MATTER?','Avg score by origin — manga, original, game, etc. (min. 10 shows)');
-    setLegend([
-      {color:'#c93871', label:'Lower rated'},
-      {color:'#f8e321', label:'Higher rated'},
-    ]);
-    setXLabel('Average MAL Score');
-    setYLabel('');
-
-    const sources = data.by_source.filter(d=>d.count>=10);
-    g.selectAll('.bar,.dot,.dot-line,.score-label,.annotation,.rank-label').remove();
-    xAxisG.selectAll('*').remove();
-    yAxisG.selectAll('*').remove();
-
-    const colorScale = d3.scaleLinear()
-      .domain([d3.min(sources,d=>d.avg_score), d3.max(sources,d=>d.avg_score)])
-      .range(['#c93871','#f8e321']);
-
-    const x = d3.scaleLinear()
-      .domain([5.5, d3.max(sources,d=>d.avg_score)+0.3]).range([0,W]);
-    const y = d3.scaleBand().domain(sources.map(d=>d.Source)).range([0,H]).padding(0.4);
-
-    xAxisG.attr('transform',`translate(0,${H})`)
-      .call(d3.axisBottom(x).ticks(5)).selectAll('text').attr('fill','#a899cc');
-    yAxisG.call(d3.axisLeft(y)).selectAll('text').attr('fill','#a899cc').style('font-size','11px');
-
-    g.selectAll('.dot-line').data(sources).enter()
-      .append('line').attr('class','dot dot-line')
-      .attr('x1',0).attr('x2',0)
-      .attr('y1',d=>y(d.Source)+y.bandwidth()/2)
-      .attr('y2',d=>y(d.Source)+y.bandwidth()/2)
-      .attr('stroke','#312678').attr('stroke-width',2)
-      .transition().duration(600).delay((d,i)=>i*70)
-      .attr('x2',d=>x(d.avg_score));
-
-    g.selectAll('.dot-circle').data(sources).enter()
-      .append('circle').attr('class','dot dot-circle')
-      .attr('cx',0).attr('cy',d=>y(d.Source)+y.bandwidth()/2)
-      .attr('r',9).attr('fill',d=>colorScale(d.avg_score))
-      .attr('stroke','#080d1e').attr('stroke-width',2).attr('cursor','pointer')
-      .on('mousemove', function(event,d) {
-        showTooltip(`<strong>${d.Source}</strong>Avg score: ${d.avg_score.toFixed(2)}<br>${d.count} shows`, event);
-        g.selectAll('.dot-circle').transition().duration(150)
-          .attr('opacity',dd=>dd===d?1:0.25).attr('r',dd=>dd===d?12:9);
-        g.selectAll('.dot-line').transition().duration(150)
-          .attr('opacity',dd=>dd===d?1:0.2);
-      })
-      .on('mouseleave', function() {
-        hideTooltip();
-        g.selectAll('.dot-circle').transition().duration(150).attr('opacity',1).attr('r',9);
-        g.selectAll('.dot-line').transition().duration(150).attr('opacity',1);
-      })
-      .transition().duration(600).delay((d,i)=>i*70)
-      .attr('cx',d=>x(d.avg_score));
-
-    g.selectAll('.dot-label').data(sources).enter()
-      .append('text').attr('class','dot dot-label')
-      .attr('x',14).attr('y',d=>y(d.Source)+y.bandwidth()/2+4)
-      .attr('fill','#f9e8d0').attr('font-size','10px')
-      .attr('font-family','DM Sans,sans-serif').attr('text-anchor','start').attr('opacity',0)
-      .text(d=>d.avg_score.toFixed(2))
-      .transition().duration(400).delay((d,i)=>i*70+500)
-      .attr('x',d=>x(d.avg_score)+14).attr('opacity',1);
-  }
-
-  //scrollama
-  function initScrollama() {
-    scrollama().setup({ step:'.step', offset:0.5, debug:false })
-      .onStepEnter(response => {
-        document.querySelectorAll('.step').forEach(s=>s.classList.remove('is-active'));
-        response.element.classList.add('is-active');
-        drawScene(response.index);
-      })
-      .onStepExit(response => {
-        if (response.direction === 'up') {
-          drawScene(Math.max(0, response.index - 1));
-        }
-      });
-    window.addEventListener('resize', () => location.reload());
-  }
-
-  // init
-  d3.json('anime_data.json').then(loaded => {
-    data = loaded;
-    // draw scene 0 directly without fade on first load
-    _draw(0);
-    currentStep = 0;
-    updateProgress(0);
-    initScrollama();
+    setTimeout(()=>{_draw(currentStep);chartWrapper.classList.remove('fading');},220);
   });
+
+  function drawScene(step){
+    if(step===currentStep)return;
+    currentStep=step;updateProgress(step);
+    if(!answered[step]){
+      showQuiz(step);
+      g.selectAll('*').remove();xAxisG.selectAll('*').remove();yAxisG.selectAll('*').remove();
+      svg.selectAll('.chart-title-text,.chart-sub-text').remove();setLegend([]);
+    } else {
+      quizOverlay.classList.remove('visible');
+      chartWrapper.classList.add('fading');
+      setTimeout(()=>{_draw(step);chartWrapper.classList.remove('fading');},220);
+    }
+  }
+
+  function _draw(step){
+    const W=chartEl.clientWidth-margin.left-margin.right;
+    const H=chartEl.clientHeight-margin.top-margin.bottom;
+    if(step===0)drawVolume(W,H);
+    if(step===1)drawScoreOverlay(W,H);
+    if(step===2)drawSource(W,H);
+    if(step===3)drawStudios(W,H);
+    if(step===4)drawSummary(W,H);
+  }
+
+  function drawVolume(W,H){
+    setChartTitle('ANIME PRODUCTION OVER TIME','Number of TV anime per year since 1961');
+    setLegend([{color:'#c93871',label:'TV anime count per year'}]);
+    setYLabel('Number of shows');setXLabel('Year');
+    const years=data.by_year;
+    g.selectAll('*').remove();xAxisG.selectAll('*').remove();yAxisG.selectAll('*').remove();
+    const x=d3.scaleBand().domain(years.map(d=>d.Year)).range([0,W]).padding(0.15);
+    const y=d3.scaleLinear().domain([0,d3.max(years,d=>d.count)]).nice().range([H,0]);
+    xAxisG.attr('transform',`translate(0,${H})`).call(d3.axisBottom(x).tickValues(x.domain().filter(d=>d%10===0))).selectAll('text').attr('fill','#a899cc');
+    yAxisG.call(d3.axisLeft(y).ticks(6)).selectAll('text').attr('fill','#a899cc');
+    const stagger=isFirstLoad;isFirstLoad=false;
+    g.selectAll('.bar').data(years,d=>d.Year).enter().append('rect').attr('class','bar')
+      .attr('x',d=>x(d.Year)).attr('width',x.bandwidth()).attr('y',H).attr('height',0)
+      .attr('fill','#c93871').attr('rx',2).attr('cursor','pointer')
+      .on('mousemove',function(event,d){showTooltip(`<strong>${d.Year}</strong>${d.count} anime aired`,event);g.selectAll('.bar').transition().duration(150).attr('opacity',dd=>dd===d?1:0.25);})
+      .on('mouseleave',function(){hideTooltip();g.selectAll('.bar').transition().duration(150).attr('opacity',1);})
+      .transition().duration(stagger?800:600).ease(d3.easeCubicOut).delay((d,i)=>stagger?i*7:0)
+      .attr('y',d=>y(d.count)).attr('height',d=>H-y(d.count));
+    const peak=years.reduce((a,b)=>b.count>a.count?b:a);
+    setTimeout(()=>{
+      g.selectAll('.annotation').remove();
+      const ax=x(peak.Year)+x.bandwidth()/2,ay=y(peak.count)-10;
+      const ann=g.append('g').attr('class','annotation').attr('opacity',0);
+      ann.append('line').attr('x1',ax).attr('x2',ax).attr('y1',ay).attr('y2',ay-28).attr('stroke','#f8e321').attr('stroke-width',1.5).attr('stroke-dasharray','3,2');
+      ann.append('rect').attr('x',ax-50).attr('y',ay-52).attr('width',100).attr('height',22).attr('rx',4).attr('fill','#1f1558').attr('stroke','#f8e321').attr('stroke-width',1);
+      ann.append('text').attr('x',ax).attr('y',ay-36).attr('text-anchor','middle').attr('font-family','DM Sans,sans-serif').attr('font-size','10px').attr('fill','#f8e321').text(`${peak.count} shows (${peak.Year})`);
+      ann.transition().duration(400).attr('opacity',1);
+    },stagger?years.length*7+600:700);
+  }
+
+  function drawScoreOverlay(W,H){
+    setChartTitle('HAS QUALITY KEPT UP?','Average MAL score per year since 1961');
+    setLegend([{color:'#c93871',label:'Average score per year'}]);
+    setYLabel('Average Score');setXLabel('Year');
+    const years=data.by_year;
+    g.selectAll('*').remove();xAxisG.selectAll('*').remove();yAxisG.selectAll('*').remove();
+    const x=d3.scaleLinear().domain(d3.extent(years,d=>d.Year)).range([0,W]);
+    const y=d3.scaleLinear().domain([5.5,d3.max(years,d=>d.avg_score)+0.2]).nice().range([H,0]);
+    xAxisG.attr('transform',`translate(0,${H})`).call(d3.axisBottom(x).tickFormat(d3.format('d')).ticks(8)).selectAll('text').attr('fill','#a899cc');
+    yAxisG.call(d3.axisLeft(y).ticks(6)).selectAll('text').attr('fill','#a899cc');
+    const area=d3.area().x(d=>x(d.Year)).y0(H).y1(d=>y(d.avg_score)).curve(d3.curveCatmullRom);
+    g.append('path').datum(years).attr('fill','#c93871').attr('opacity',0.15).attr('d',area);
+    const line=d3.line().x(d=>x(d.Year)).y(d=>y(d.avg_score)).curve(d3.curveCatmullRom);
+    const path=g.append('path').datum(years).attr('fill','none').attr('stroke','#c93871').attr('stroke-width',2.5).attr('d',line);
+    const tl=path.node().getTotalLength();
+    path.attr('stroke-dasharray',`${tl} ${tl}`).attr('stroke-dashoffset',tl).transition().duration(1200).ease(d3.easeCubicOut).attr('stroke-dashoffset',0);
+    g.selectAll('.dot-circle').data(years).enter().append('circle').attr('class','dot-circle')
+      .attr('cx',d=>x(d.Year)).attr('cy',d=>y(d.avg_score)).attr('r',3).attr('fill','#c93871').attr('cursor','pointer')
+      .on('mousemove',function(event,d){showTooltip(`<strong>${d.Year}</strong>Avg score: ${d.avg_score.toFixed(2)}<br>${d.count} anime`,event);d3.select(this).attr('r',6).attr('fill','#f8e321');})
+      .on('mouseleave',function(){hideTooltip();d3.select(this).attr('r',3).attr('fill','#c93871');});
+  }
+
+  function drawSource(W,H){
+    setChartTitle('DOES SOURCE MATERIAL MATTER?','Avg MAL score by origin — min. 10 shows');
+    setLegend([{color:'#c93871',label:'Lower rated'},{color:'#f8e321',label:'Higher rated'}]);
+    setXLabel('Average MAL Score');setYLabel('');
+    const sources=data.by_source.filter(d=>d.count>=10);
+    g.selectAll('*').remove();xAxisG.selectAll('*').remove();yAxisG.selectAll('*').remove();
+    const colorScale=d3.scaleLinear().domain([d3.min(sources,d=>d.avg_score),d3.max(sources,d=>d.avg_score)]).range(['#c93871','#f8e321']);
+    const x=d3.scaleLinear().domain([5.5,d3.max(sources,d=>d.avg_score)+0.3]).range([0,W]);
+    const y=d3.scaleBand().domain(sources.map(d=>d.Source)).range([0,H]).padding(0.4);
+    xAxisG.attr('transform',`translate(0,${H})`).call(d3.axisBottom(x).ticks(5)).selectAll('text').attr('fill','#a899cc');
+    yAxisG.call(d3.axisLeft(y)).selectAll('text').attr('fill','#a899cc').style('font-size','11px');
+    g.selectAll('.dot-line').data(sources).enter().append('line').attr('class','dot-line')
+      .attr('x1',0).attr('x2',0).attr('y1',d=>y(d.Source)+y.bandwidth()/2).attr('y2',d=>y(d.Source)+y.bandwidth()/2)
+      .attr('stroke','#312678').attr('stroke-width',2).transition().duration(600).delay((_,i)=>i*70).attr('x2',d=>x(d.avg_score));
+    g.selectAll('.dot-circle').data(sources).enter().append('circle').attr('class','dot-circle')
+      .attr('cx',0).attr('cy',d=>y(d.Source)+y.bandwidth()/2).attr('r',9)
+      .attr('fill',d=>colorScale(d.avg_score)).attr('stroke','#080d1e').attr('stroke-width',2).attr('cursor','pointer')
+      .on('mousemove',(e,d)=>{showTooltip(`<strong>${d.Source}</strong>Avg score: ${d.avg_score.toFixed(2)}<br>${d.count} shows`,e);g.selectAll('.dot-circle').transition().duration(150).attr('opacity',dd=>dd===d?1:0.25).attr('r',dd=>dd===d?12:9);g.selectAll('.dot-line').transition().duration(150).attr('opacity',dd=>dd===d?1:0.2);})
+      .on('mouseleave',()=>{hideTooltip();g.selectAll('.dot-circle').transition().duration(150).attr('opacity',1).attr('r',9);g.selectAll('.dot-line').transition().duration(150).attr('opacity',1);})
+      .transition().duration(600).delay((_,i)=>i*70).attr('cx',d=>x(d.avg_score));
+    g.selectAll('.dot-label').data(sources).enter().append('text').attr('class','dot-label')
+      .attr('x',14).attr('y',d=>y(d.Source)+y.bandwidth()/2+4).attr('fill','#f9e8d0').attr('font-size','10px').attr('font-family','DM Sans,sans-serif').attr('text-anchor','start').attr('opacity',0).text(d=>d.avg_score.toFixed(2))
+      .transition().duration(400).delay((_,i)=>i*70+500).attr('x',d=>x(d.avg_score)+14).attr('opacity',1);
+  }
+
+  function drawStudios(W,H){
+    setChartTitle('QUALITY VS. OUTPUT','Each bubble = a studio · size = number of shows · hover to reveal');
+    setLegend([{color:'#FF89B5',label:'Studio — hover for details'}]);
+    setXLabel('Number of Shows');setYLabel('Avg MAL Score');
+    const studios=data.by_studio;
+    g.selectAll('*').remove();xAxisG.selectAll('*').remove();yAxisG.selectAll('*').remove();
+    const x=d3.scaleLinear().domain([0,d3.max(studios,d=>d.count)*1.15]).range([0,W]);
+    const y=d3.scaleLinear().domain([d3.min(studios,d=>d.avg_score)-0.1,d3.max(studios,d=>d.avg_score)+0.1]).range([H,0]);
+    const r=d3.scaleSqrt().domain([0,d3.max(studios,d=>d.count)]).range([6,28]);
+    xAxisG.attr('transform',`translate(0,${H})`).call(d3.axisBottom(x).ticks(6)).selectAll('text').attr('fill','#a899cc');
+    yAxisG.call(d3.axisLeft(y).ticks(6)).selectAll('text').attr('fill','#a899cc');
+    g.selectAll('.gridline-h').data(y.ticks(6)).enter().append('line').attr('class','gridline-h')
+      .attr('x1',0).attr('x2',W).attr('y1',d=>y(d)).attr('y2',d=>y(d)).attr('stroke','#312678').attr('stroke-width',1).attr('stroke-dasharray','3,3');
+    g.selectAll('.studio-dot').data(studios).enter().append('circle').attr('class','studio-dot')
+      .attr('cx',d=>x(d.count)).attr('cy',H).attr('r',0)
+      .attr('fill','#FF89B5').attr('opacity',0.85).attr('stroke','#080d1e').attr('stroke-width',1.5).attr('cursor','pointer')
+      .on('mousemove',(e,d)=>{showTooltip(`<strong>${d.Studios}</strong>Avg: ${d.avg_score.toFixed(2)}<br>${d.count} shows`,e);g.selectAll('.studio-dot').transition().duration(150).attr('opacity',dd=>dd===d?1:0.2);g.selectAll('.studio-label').transition().duration(150).attr('opacity',dd=>dd===d?1:0);d3.select(e.currentTarget).attr('stroke','#f8e321').attr('stroke-width',2.5);})
+      .on('mouseleave',(e)=>{hideTooltip();g.selectAll('.studio-dot').transition().duration(150).attr('opacity',0.85);g.selectAll('.studio-label').transition().duration(150).attr('opacity',1);d3.select(e.currentTarget).attr('stroke','#080d1e').attr('stroke-width',1.5);})
+      .transition().duration(700).ease(d3.easeCubicOut).delay((_,i)=>i*60).attr('cy',d=>y(d.avg_score)).attr('r',d=>r(d.count));
+    g.selectAll('.studio-label').data(studios).enter().append('text').attr('class','studio-label')
+      .attr('x',d=>x(d.count)).attr('y',d=>y(d.avg_score)-r(d.count)-5).attr('text-anchor','middle')
+      .attr('font-family','DM Sans,sans-serif').attr('font-size','9px').attr('fill','#f9e8d0').attr('opacity',0).text(d=>d.Studios)
+      .transition().duration(400).delay((_,i)=>i*60+500).attr('opacity',1);
+  }
+
+  function drawSummary(W,H){
+    setChartTitle('THE GOLDEN AGE — BY THE NUMBERS','Key findings across six decades of anime');
+    setLegend([]);setXLabel('');setYLabel('');
+    g.selectAll('*').remove();xAxisG.selectAll('*').remove();yAxisG.selectAll('*').remove();
+    const cards=[
+      {icon:'',label:'Peak Output',value:'233',unit:'shows in 2023',color:'#c93871'},
+      {icon:'',label:'Score Trend',value:'+0.8',unit:'pts gain since 2000',color:'#f8e321'},
+      {icon:'',label:'Best Source',value:'Manga',unit:'highest avg rating',color:'#FF89B5'},
+      {icon:'',label:'Top Studios',value:'10+',unit:'shows to qualify',color:'#f9c387'},
+    ];
+    const pad=16,cardW=(W-pad)/2,cardH=(H-pad-60)/2;
+    cards.forEach((d,i)=>{
+      const col=i%2,row=Math.floor(i/2);
+      const card=g.append('g').attr('transform',`translate(${col*(cardW+pad)},${row*(cardH+pad)})`).attr('opacity',0);
+      card.append('rect').attr('width',cardW).attr('height',cardH).attr('rx',12).attr('fill','#180f44').attr('stroke',d.color).attr('stroke-width',1.5);
+      card.append('rect').attr('width',cardW*0.4).attr('height',3).attr('rx',2).attr('x',cardW*0.3).attr('fill',d.color);
+      card.append('text').attr('x',cardW/2).attr('y',cardH*0.3).attr('text-anchor','middle').attr('font-size','1.8rem').text(d.icon);
+      card.append('text').attr('x',cardW/2).attr('y',cardH*0.54).attr('text-anchor','middle').attr('font-family','Bebas Neue,sans-serif').attr('font-size','2rem').attr('letter-spacing','0.04em').attr('fill',d.color).text(d.value);
+      card.append('text').attr('x',cardW/2).attr('y',cardH*0.7).attr('text-anchor','middle').attr('font-family','DM Sans,sans-serif').attr('font-size','0.62rem').attr('letter-spacing','0.1em').attr('fill','#f9e8d0').text(d.unit.toUpperCase());
+      card.append('text').attr('x',cardW/2).attr('y',cardH*0.84).attr('text-anchor','middle').attr('font-family','DM Sans,sans-serif').attr('font-size','0.58rem').attr('fill','#a899cc').text(d.label.toUpperCase());
+      card.transition().duration(500).delay(i*120).attr('opacity',1);
+    });
+    const pct=scoreTotal>0?Math.round((score/scoreTotal)*100):0;
+    const sc=g.append('g').attr('opacity',0);
+    sc.append('rect').attr('x',0).attr('y',H-52).attr('width',W).attr('height',48).attr('rx',10).attr('fill','#1f1558').attr('stroke','#f8e321').attr('stroke-width',1);
+    sc.append('text').attr('x',W/2).attr('y',H-30).attr('text-anchor','middle').attr('font-family','Bebas Neue,sans-serif').attr('font-size','0.9rem').attr('letter-spacing','0.08em').attr('fill','#f8e321').text('THE GOLDEN AGE OF ANIME IS HAPPENING RIGHT NOW');
+    sc.append('text').attr('x',W/2).attr('y',H-12).attr('text-anchor','middle').attr('font-family','DM Sans,sans-serif').attr('font-size','0.65rem').attr('fill','#a899cc').text(`You scored ${score}/${scoreTotal} (${pct}%) on the quiz`);
+    sc.transition().duration(500).delay(600).attr('opacity',1);
+  }
+
+  function initScrollama(){
+    scrollama().setup({step:'#scrolly .step',offset:0.5})
+      .onStepEnter(r=>{document.querySelectorAll('#scrolly .step').forEach(s=>s.classList.remove('is-active'));r.element.classList.add('is-active');drawScene(r.index);})
+      .onStepExit(r=>{if(r.direction==='up')drawScene(Math.max(0,r.index-1));});
+    window.addEventListener('resize',()=>location.reload());
+  }
+
+  d3.json('anime_data.json').then(loaded=>{data=loaded;initScrollama();});
 </script>
 </body>
 </html>
