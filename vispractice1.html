@@ -729,11 +729,15 @@
   }
 
   // vis 3: STUDIOS
-  function drawStudios(W, H) {
+function drawStudios(W, H) {
     hideEventSliderPanel();
     clearChart();
   setChartTitle('QUALITY VS. OUTPUT', 'Each dot is a studio — size = number of shows, position = avg score vs. total shows');
-  setLegend([{ color:'#FF89B5', label:'Studio — hover for details' }]);
+  setLegend([
+    { color:'#312678', label:'Fewer shows' },
+    { color:'#c93871', label:'Mid output' },
+    { color:'#f8e321', label:'More shows' },
+  ]);
   setXLabel('Number of Shows');
   setYLabel('Avg MAL Score');
 
@@ -754,6 +758,10 @@
     .domain([0, d3.max(studios, d=>d.count)])
     .range([6, 28]);
 
+  const colorScale = d3.scaleSequential()
+    .domain([d3.min(studios, d=>d.count), d3.max(studios, d=>d.count)])
+    .interpolator(d3.interpolateRgbBasis(['#312678', '#c93871', '#FF89B5', '#f8e321']));
+
   xAxisG.attr('transform',`translate(0,${H})`)
     .call(d3.axisBottom(x).ticks(6))
     .selectAll('text').attr('fill','#a899cc');
@@ -773,9 +781,9 @@
   g.selectAll('.studio-dot').data(studios).enter()
     .append('circle').attr('class','dot studio-dot')
     .attr('cx', d=>x(d.count))
-    .attr('cy', H) // start at bottom, animate up
+    .attr('cy', H)
     .attr('r', 0)
-    .attr('fill','#FF89B5')
+    .attr('fill', d => colorScale(d.count))
     .attr('opacity', 0.85)
     .attr('stroke','#080d1e')
     .attr('stroke-width', 1.5)
