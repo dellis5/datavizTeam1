@@ -363,6 +363,150 @@
       margin-bottom: 0.25rem;
     }
 
+
+
+    #module-overview {
+      padding: 7rem 6vw 8rem 6vw;
+      background: radial-gradient(ellipse at 15% 20%, rgba(201,56,113,0.08) 0%, transparent 45%),
+                  radial-gradient(ellipse at 85% 80%, rgba(248,227,33,0.05) 0%, transparent 40%),
+                  var(--bg);
+      position: relative;
+    }
+
+    #module-overview::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(8,13,30,0) 0%, rgba(8,13,30,0.3) 100%);
+    }
+
+    .module-overview-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .module-overview-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .module-overview-header .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.85rem;
+    }
+
+    .module-overview-header h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.8rem;
+      color: var(--text);
+    }
+
+    .module-overview-header p {
+      max-width: 760px;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+
+    .module-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .module-card {
+      min-height: 270px;
+      padding: 1.8rem;
+      background: linear-gradient(135deg, rgba(24,15,68,0.96) 0%, rgba(31,21,88,0.96) 100%);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      box-shadow: 0 0 0 1px rgba(49,38,120,0.18), inset 0 0 32px rgba(7,14,54,0.18);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .module-link:hover .module-card,
+    .module-link:focus .module-card {
+      transform: translateY(-4px);
+      border-color: #4d40b4;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.22), inset 0 0 32px rgba(7,14,54,0.18);
+    }
+
+    .module-top {
+      margin-bottom: 1.5rem;
+    }
+
+    .module-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.1rem;
+      line-height: 1;
+      color: var(--red);
+      margin-bottom: 0.55rem;
+    }
+
+    .module-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      line-height: 0.98;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      margin-bottom: 0.9rem;
+    }
+
+    .module-card p {
+      font-size: 0.98rem;
+      line-height: 1.8;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .module-insight {
+      margin-top: 1.25rem;
+      padding: 0.9rem 1rem;
+      background: rgba(49,38,120,0.35);
+      border-radius: 8px;
+      border-left: 2px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    .module-footer-note {
+      margin-top: 1.6rem;
+      color: var(--muted);
+      font-size: 0.84rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 900px) {
+      .module-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .module-card {
+        min-height: auto;
+      }
+    }
+
     #tooltip {
       position: fixed;
       background: var(--card2);
@@ -432,32 +576,32 @@
   </div>
 
   <div id="steps">
-    <div class="step" data-step="0">
+    <div class="step" id="step-0" data-step="0">
       <div class="step-number">01</div>
       <h2>The Flood</h2>
       <p>Since the 1960s, anime production has grown at an extraordinary pace. What started as a handful of TV shows per year became hundreds by the 2010s, an industry-wide explosion driven by streaming, global fandom, and lower production barriers.</p>
       <div class="insight">Peak year: 2023 with 233 new TV anime</div>
     </div>
-    <div class="step" data-step="1">
+    <div class="step" id="step-1" data-step="1">
       <div class="step-number">02</div>
       <h2>The Quality Question</h2>
       <p>More anime inevitably means more filler, but surprisingly, average scores have held steady or even improved in recent years. Early anime from the 60s and 70s scores lower, possibly due to fewer ratings and different storytelling norms.</p>
       <div class="insight">Scores have trended upward since the early 2000s</div>
     </div>
-    <div class="step" data-step="2">
+    <div class="step" id="step-2" data-step="2">
       <div class="step-number">03</div>
       <h2>The Golden Studios</h2>
       <p>Which studio reigns supreme in terms of viewer rating? Does more shows/ more legacy mean better reviews?</p>
       <div class="insight">Only studios with 10+ shows qualify</div>
     </div>
-    <div class="step" data-step="3">
+    <div class="step" id="step-3" data-step="3">
       <div class="step-number">04</div>
       <h2>Source Material</h2>
       <p>Does it matter whether an anime is adapted from manga, a light novel, a game, or made from scratch? The data says yes... manga and light novel adaptations consistently score the highest, likely because the source material has already been proven popular with fans before the anime even airs.</p>
       <div class="insight">Manga & light novels top the chart, games and originals lag behind</div>
     </div>
       
-    <div class="step" data-step="4">
+    <div class="step" id="step-4" data-step="4">
       <div class="step-number">05</div>
       <h2>Major Events and Anime Growth</h2>
       <p>
@@ -467,6 +611,87 @@
       </p>
       <div class="insight">Bars show yearly anime count and the line shows average score.</div>
     </div>
+  </div>
+</section>
+
+<section id="module-overview">
+  <div class="module-overview-inner">
+    <div class="module-overview-header">
+      <div class="eyebrow">Summary</div>
+      <h2>Explore All<br>Modules</h2>
+      <p>
+        This summary screen collects the main parts of the story in one place. Each card works like a shortcut — click any module to jump back to its chart and revisit that part of the analysis.
+      </p>
+    </div>
+
+    <div class="module-grid">
+      <a class="module-link" href="#step-0" data-step-target="0">
+        <div class="module-card">
+          <div class="module-top">
+            <div class="module-number">01</div>
+            <div class="module-title">The Flood</div>
+            <p>
+              Anime production expanded dramatically over time, especially in the 2000s and 2010s, turning a small medium into a large and fast-moving industry.
+            </p>
+          </div>
+          <div class="module-insight">Peak year: 2016 with 233 TV anime.</div>
+        </div>
+      </a>
+
+      <a class="module-link" href="#step-1" data-step-target="1">
+        <div class="module-card">
+          <div class="module-top">
+            <div class="module-number">02</div>
+            <div class="module-title">The Quality Question</div>
+            <p>
+              Even as the number of releases grows, average scores remain fairly steady and show a stronger upward trend in the more recent decades.
+            </p>
+          </div>
+          <div class="module-insight">Scores have trended upward since the early 2000s.</div>
+        </div>
+      </a>
+
+      <a class="module-link" href="#step-2" data-step-target="2">
+        <div class="module-card">
+          <div class="module-top">
+            <div class="module-number">03</div>
+            <div class="module-title">The Golden Studios</div>
+            <p>
+              This view compares output and rating together to show which studios balance consistency, reputation, and volume across their catalog.
+            </p>
+          </div>
+          <div class="module-insight">Only studios with 10+ shows qualify.</div>
+        </div>
+      </a>
+
+      <a class="module-link" href="#step-3" data-step-target="3">
+        <div class="module-card">
+          <div class="module-top">
+            <div class="module-number">04</div>
+            <div class="module-title">Source Material</div>
+            <p>
+              Adaptation source matters. Some origins consistently score higher, suggesting that proven source material can give anime a stronger starting point.
+            </p>
+          </div>
+          <div class="module-insight">Manga and light novel adaptations lead the chart.</div>
+        </div>
+      </a>
+
+      <a class="module-link" href="#step-4" data-step-target="4">
+        <div class="module-card">
+          <div class="module-top">
+            <div class="module-number">05</div>
+            <div class="module-title">Major Events and Anime Growth</div>
+            <p>
+              This chart compares production count and average score around major periods like the Netflix expansion era and the COVID-19 period.
+            </p>
+          </div>
+          <div class="module-insight">Bars show yearly count while the line tracks average score.</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="module-footer-note">Click any module card to jump back to that chart.</div>
   </div>
 </section>
 
@@ -554,6 +779,18 @@
   document.querySelectorAll('.progress-dot').forEach(dot => {
     dot.addEventListener('click', () => {
       document.querySelectorAll('.step')[+dot.dataset.step].scrollIntoView({ behavior:'smooth', block:'center' });
+    });
+  });
+
+
+  document.querySelectorAll('.module-link').forEach(link => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const targetStep = document.querySelectorAll('.step')[+link.dataset.stepTarget];
+
+      if (targetStep) {
+        targetStep.scrollIntoView({ behavior:'smooth', block:'center' });
+      }
     });
   });
 
