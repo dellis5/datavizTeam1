@@ -452,13 +452,25 @@
     </div>
     <div class="step" data-step="3">
       <div class="step-number">04</div>
+      <h2>Genre Demographics</h2>
+      <p>
+          Different anime genres attract very different levels of audience reach and engagement.
+          Award winning and suspense anime dominate in popularity and favorites, while genres
+          like drama, fantasy, romance, and action form a strong middle tier.
+      </p>
+      <div class="insight">
+          Award winning and suspense anime stand far above most other genres in audience engagement.
+      </div>
+  </div>
+    <div class="step" data-step="4">
+      <div class="step-number">05</div>
       <h2>Source Material</h2>
       <p>Does it matter whether an anime is adapted from manga, a light novel, a game, or made from scratch? The data says yes... manga and light novel adaptations consistently score the highest, likely because the source material has already been proven popular with fans before the anime even airs.</p>
       <div class="insight">Manga & light novels top the chart, games and originals lag behind</div>
     </div>
       
-    <div class="step" data-step="4">
-      <div class="step-number">05</div>
+    <div class="step" data-step="5">
+      <div class="step-number">06</div>
       <h2>Major Events and Anime Growth</h2>
       <p>
         This chart shows anime production count and average score around major world/media events.
@@ -582,8 +594,9 @@
     if (step === 0) drawVolume(W, H);
     if (step === 1) drawScoreOverlay(W, H);
     if (step === 2) drawStudios(W, H);
-    if (step === 3) drawSource(W, H);
-    if (step === 4) drawMajorEventSliderChart(W, H);
+    if (step === 3) drawGenreDemographics(W, H);
+    if (step === 4) drawSource(W, H);
+    if (step === 5) drawMajorEventSliderChart(W, H);
   }
 
   // vis 1: VOLUME
@@ -822,7 +835,161 @@ function drawStudios(W, H) {
     .attr('opacity',1);
 }
 
-  
+// vis 4: GENRE DEMOGRAPHICS
+function drawGenreDemographics(W, H) {
+  hideEventSliderPanel();
+  clearChart();
+
+  setChartTitle(
+    'GENRE DEMOGRAPHICS',
+    'Each dot is a genre — log-scaled position = audience reach vs. engagement, size = avg score'
+  );
+
+  setLegend([
+    { color: '#312678', label: 'Lower reach' },
+    { color: '#c93871', label: 'Mid reach' },
+    { color: '#f8e321', label: 'Higher reach' }
+  ]);
+
+  setXLabel('Average Members');
+  setYLabel('Average Favorites');
+
+  const genres = data.by_genre;
+
+  g.selectAll('.bar,.dot,.dot-line,.annotation,.rank-label,.score-label,.studio-label,.genre-label,.gridline-h')
+    .remove();
+
+  xAxisG.selectAll('*').remove();
+  yAxisG.selectAll('*').remove();
+
+  const x = d3.scaleLog()
+    .domain([
+      d3.min(genres, d => d.avg_members) * 0.8,
+      d3.max(genres, d => d.avg_members) * 1.1
+    ])
+    .range([0, W]);
+
+  const y = d3.scaleLog()
+    .domain([
+      d3.min(genres, d => d.avg_favorites) * 0.8,
+      d3.max(genres, d => d.avg_favorites) * 1.15
+    ])
+    .range([H, 0]);
+
+  const r = d3.scaleSqrt()
+    .domain(d3.extent(genres, d => d.avg_score))
+    .range([6, 18]);
+
+  const colorScale = d3.scaleSequential()
+    .domain(d3.extent(genres, d => d.avg_members))
+    .interpolator(
+      d3.interpolateRgbBasis(['#312678', '#c93871', '#FF89B5', '#f8e321'])
+    );
+
+  xAxisG.attr('transform', `translate(0,${H})`)
+    .call(d3.axisBottom(x).ticks(5, "~s"))
+    .selectAll('text')
+    .attr('fill', '#a899cc');
+
+  yAxisG.call(d3.axisLeft(y).ticks(5, "~s"))
+    .selectAll('text')
+    .attr('fill', '#a899cc');
+
+  // Gridlines
+  g.selectAll('.gridline-h')
+    .data(y.ticks(5))
+    .enter()
+    .append('line')
+    .attr('class', 'gridline-h')
+    .attr('x1', 0)
+    .attr('x2', W)
+    .attr('y1', d => y(d))
+    .attr('y2', d => y(d))
+    .attr('stroke', '#312678')
+    .attr('stroke-width', 1)
+    .attr('stroke-dasharray', '3,3');
+
+  // Genre dots
+  g.selectAll('.genre-dot')
+    .data(genres)
+    .enter()
+    .append('circle')
+    .attr('class', 'dot genre-dot')
+    .attr('cx', d => x(d.avg_members))
+    .attr('cy', H)
+    .attr('r', 0)
+    .attr('fill', d => colorScale(d.avg_members))
+    .attr('opacity', 0.85)
+    .attr('stroke', '#080d1e')
+    .attr('stroke-width', 1.5)
+    .attr('cursor', 'pointer')
+    .on('mouseover', function(event, d) {
+      showTooltip(
+        `<strong>${d.Genres}</strong><br>
+        Avg score: ${d.avg_score.toFixed(2)}<br>
+        Avg members: ${Math.round(d.avg_members).toLocaleString()}<br>
+        Avg favorites: ${Math.round(d.avg_favorites).toLocaleString()}<br>
+        Anime count: ${d.count}`,
+        event
+      );
+
+      g.selectAll('.genre-dot')
+        .transition()
+        .duration(150)
+        .attr('opacity', dd => dd === d ? 1 : 0.25);
+
+      g.selectAll('.genre-label')
+        .transition()
+        .duration(150)
+        .attr('opacity', dd => dd === d ? 1 : 0.1);
+
+      d3.select(this)
+        .attr('stroke', '#f8e321')
+        .attr('stroke-width', 2.5);
+    })
+    .on('mouseleave', function() {
+      hideTooltip();
+
+      g.selectAll('.genre-dot')
+        .transition()
+        .duration(150)
+        .attr('opacity', 0.85);
+
+      g.selectAll('.genre-label')
+        .transition()
+        .duration(150)
+        .attr('opacity', 1);
+
+      d3.select(this)
+        .attr('stroke', '#080d1e')
+        .attr('stroke-width', 1.5);
+    })
+    .transition()
+    .duration(700)
+    .ease(d3.easeCubicOut)
+    .delay((d, i) => i * 60)
+    .attr('cy', d => y(d.avg_favorites))
+    .attr('r', d => r(d.avg_score));
+
+  // Genre labels
+  g.selectAll('.genre-label')
+    .data(genres)
+    .enter()
+    .append('text')
+    .attr('class', 'genre-label')
+    .attr('x', d => x(d.avg_members))
+    .attr('y', d => y(d.avg_favorites) - r(d.avg_score) - 5)
+    .attr('text-anchor', 'middle')
+    .attr('font-family', 'DM Sans, sans-serif')
+    .attr('font-size', '9px')
+    .attr('fill', '#f9e8d0')
+    .attr('opacity', 0)
+    .text(d => d.Genres)
+    .transition()
+    .duration(400)
+    .delay((d, i) => i * 60 + 500)
+    .attr('opacity', 1);
+}
 
   // vis 4: SOURCE
   function drawSource(W, H) {
