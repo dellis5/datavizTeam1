@@ -1,493 +1,621 @@
 {
-    "by_year": [
-        {
-            "Year": 1961.0,
-            "count": 1,
-            "avg_score": 6.16
-        },
-        {
-            "Year": 1962.0,
-            "count": 1,
-            "avg_score": 6.05
-        },
-        {
-            "Year": 1963.0,
-            "count": 5,
-            "avg_score": 6.194
-        },
-        {
-            "Year": 1964.0,
-            "count": 3,
-            "avg_score": 5.973333333333334
-        },
-        {
-            "Year": 1965.0,
-            "count": 9,
-            "avg_score": 5.957777777777777
-        },
-        {
-            "Year": 1966.0,
-            "count": 9,
-            "avg_score": 6.068888888888889
-        },
-        {
-            "Year": 1967.0,
-            "count": 9,
-            "avg_score": 6.302222222222222
-        },
-        {
-            "Year": 1968.0,
-            "count": 10,
-            "avg_score": 6.476000000000001
-        },
-        {
-            "Year": 1969.0,
-            "count": 11,
-            "avg_score": 6.633636363636364
-        },
-        {
-            "Year": 1970.0,
-            "count": 8,
-            "avg_score": 6.50125
-        },
-        {
-            "Year": 1971.0,
-            "count": 14,
-            "avg_score": 6.262857142857143
-        },
-        {
-            "Year": 1972.0,
-            "count": 12,
-            "avg_score": 6.441666666666666
-        },
-        {
-            "Year": 1973.0,
-            "count": 17,
-            "avg_score": 6.311764705882353
-        },
-        {
-            "Year": 1974.0,
-            "count": 19,
-            "avg_score": 6.358421052631579
-        },
-        {
-            "Year": 1975.0,
-            "count": 20,
-            "avg_score": 6.55
-        },
-        {
-            "Year": 1976.0,
-            "count": 22,
-            "avg_score": 6.366818181818181
-        },
-        {
-            "Year": 1977.0,
-            "count": 26,
-            "avg_score": 6.466538461538462
-        },
-        {
-            "Year": 1978.0,
-            "count": 18,
-            "avg_score": 7.020555555555556
-        },
-        {
-            "Year": 1979.0,
-            "count": 24,
-            "avg_score": 6.604166666666667
-        },
-        {
-            "Year": 1980.0,
-            "count": 25,
-            "avg_score": 6.644400000000001
-        },
-        {
-            "Year": 1981.0,
-            "count": 29,
-            "avg_score": 6.719310344827587
-        },
-        {
-            "Year": 1982.0,
-            "count": 28,
-            "avg_score": 6.616785714285714
-        },
-        {
-            "Year": 1983.0,
-            "count": 35,
-            "avg_score": 6.726285714285714
-        },
-        {
-            "Year": 1984.0,
-            "count": 34,
-            "avg_score": 6.508235294117647
-        },
-        {
-            "Year": 1985.0,
-            "count": 18,
-            "avg_score": 6.892222222222222
-        },
-        {
-            "Year": 1986.0,
-            "count": 25,
-            "avg_score": 6.766
-        },
-        {
-            "Year": 1987.0,
-            "count": 26,
-            "avg_score": 6.668461538461538
-        },
-        {
-            "Year": 1988.0,
-            "count": 34,
-            "avg_score": 6.618823529411764
-        },
-        {
-            "Year": 1989.0,
-            "count": 36,
-            "avg_score": 6.741944444444445
-        },
-        {
-            "Year": 1990.0,
-            "count": 22,
-            "avg_score": 6.766363636363637
-        },
-        {
-            "Year": 1991.0,
-            "count": 32,
-            "avg_score": 6.7709375
-        },
-        {
-            "Year": 1992.0,
-            "count": 36,
-            "avg_score": 6.661666666666666
-        },
-        {
-            "Year": 1993.0,
-            "count": 22,
-            "avg_score": 7.058181818181819
-        },
-        {
-            "Year": 1994.0,
-            "count": 31,
-            "avg_score": 6.847096774193548
-        },
-        {
-            "Year": 1995.0,
-            "count": 34,
-            "avg_score": 7.103529411764706
-        },
-        {
-            "Year": 1996.0,
-            "count": 34,
-            "avg_score": 7.241470588235295
-        },
-        {
-            "Year": 1997.0,
-            "count": 43,
-            "avg_score": 6.727209302325581
-        },
-        {
-            "Year": 1998.0,
-            "count": 70,
-            "avg_score": 6.736714285714285
-        },
-        {
-            "Year": 1999.0,
-            "count": 88,
-            "avg_score": 6.72659090909091
-        },
-        {
-            "Year": 2000.0,
-            "count": 56,
-            "avg_score": 6.814285714285715
-        },
-        {
-            "Year": 2001.0,
-            "count": 85,
-            "avg_score": 6.707764705882353
-        },
-        {
-            "Year": 2002.0,
-            "count": 83,
-            "avg_score": 6.83144578313253
-        },
-        {
-            "Year": 2003.0,
-            "count": 101,
-            "avg_score": 6.77910891089109
-        },
-        {
-            "Year": 2004.0,
-            "count": 121,
-            "avg_score": 6.846859504132231
-        },
-        {
-            "Year": 2005.0,
-            "count": 115,
-            "avg_score": 6.951043478260869
-        },
-        {
-            "Year": 2006.0,
-            "count": 164,
-            "avg_score": 6.8757317073170725
-        },
-        {
-            "Year": 2007.0,
-            "count": 140,
-            "avg_score": 6.992285714285714
-        },
-        {
-            "Year": 2008.0,
-            "count": 138,
-            "avg_score": 7.036449275362319
-        },
-        {
-            "Year": 2009.0,
-            "count": 129,
-            "avg_score": 7.042635658914729
-        },
-        {
-            "Year": 2010.0,
-            "count": 109,
-            "avg_score": 6.9971559633027525
-        },
-        {
-            "Year": 2011.0,
-            "count": 145,
-            "avg_score": 6.918344827586207
-        },
-        {
-            "Year": 2012.0,
-            "count": 157,
-            "avg_score": 6.996114649681529
-        },
-        {
-            "Year": 2013.0,
-            "count": 180,
-            "avg_score": 6.825777777777779
-        },
-        {
-            "Year": 2014.0,
-            "count": 204,
-            "avg_score": 6.823039215686275
-        },
-        {
-            "Year": 2015.0,
-            "count": 201,
-            "avg_score": 6.749800995024875
-        },
-        {
-            "Year": 2016.0,
-            "count": 233,
-            "avg_score": 6.685922746781116
-        },
-        {
-            "Year": 2017.0,
-            "count": 217,
-            "avg_score": 6.630875576036867
-        },
-        {
-            "Year": 2018.0,
-            "count": 226,
-            "avg_score": 6.821946902654867
-        },
-        {
-            "Year": 2019.0,
-            "count": 176,
-            "avg_score": 6.80471590909091
-        },
-        {
-            "Year": 2020.0,
-            "count": 172,
-            "avg_score": 6.802674418604651
-        },
-        {
-            "Year": 2021.0,
-            "count": 194,
-            "avg_score": 6.922061855670104
-        },
-        {
-            "Year": 2022.0,
-            "count": 191,
-            "avg_score": 6.964031413612566
-        },
-        {
-            "Year": 2023.0,
-            "count": 219,
-            "avg_score": 7.0368949771689495
-        },
-        {
-            "Year": 2024.0,
-            "count": 222,
-            "avg_score": 7.076351351351351
-        },
-        {
-            "Year": 2025.0,
-            "count": 56,
-            "avg_score": 6.855535714285715
-        }
-    ],
-    "by_studio": [
-        {
-            "Studios": "Kyoto Animation",
-            "count": 28,
-            "avg_score": 7.886428571428572
-        },
-        {
-            "Studios": "Wit Studio",
-            "count": 19,
-            "avg_score": 7.796315789473684
-        },
-        {
-            "Studios": "White Fox",
-            "count": 23,
-            "avg_score": 7.71304347826087
-        },
-        {
-            "Studios": "ufotable",
-            "count": 18,
-            "avg_score": 7.643333333333333
-        },
-        {
-            "Studios": "Production I.G",
-            "count": 64,
-            "avg_score": 7.6046875
-        },
-        {
-            "Studios": "Bones",
-            "count": 64,
-            "avg_score": 7.5915625
-        },
-        {
-            "Studios": "TROYCA",
-            "count": 11,
-            "avg_score": 7.578181818181818
-        },
-        {
-            "Studios": "CloverWorks",
-            "count": 25,
-            "avg_score": 7.5024
-        },
-        {
-            "Studios": "David Production",
-            "count": 23,
-            "avg_score": 7.49304347826087
-        },
-        {
-            "Studios": "MAPPA",
-            "count": 41,
-            "avg_score": 7.45829268292683
-        },
-        {
-            "Studios": "Manglobe",
-            "count": 16,
-            "avg_score": 7.445
-        },
-        {
-            "Studios": "Shaft",
-            "count": 44,
-            "avg_score": 7.428636363636364
-        },
-        {
-            "Studios": "A-1 Pictures",
-            "count": 100,
-            "avg_score": 7.4133000000000004
-        },
-        {
-            "Studios": "Bandai Namco Pictures",
-            "count": 26,
-            "avg_score": 7.379615384615385
-        },
-        {
-            "Studios": "Lerche",
-            "count": 34,
-            "avg_score": 7.352647058823529
-        }
-    ],
-    "by_source": [
-        {
-            "Source": "Manga",
-            "count": 1728,
-            "avg_score": 7.163263888888889
-        },
-        {
-            "Source": "Light novel",
-            "count": 523,
-            "avg_score": 7.079349904397706
-        },
-        {
-            "Source": "Novel",
-            "count": 151,
-            "avg_score": 7.01794701986755
-        },
-        {
-            "Source": "Web manga",
-            "count": 181,
-            "avg_score": 6.967900552486189
-        },
-        {
-            "Source": "Book",
-            "count": 35,
-            "avg_score": 6.8751428571428574
-        },
-        {
-            "Source": "4-koma manga",
-            "count": 154,
-            "avg_score": 6.7416883116883115
-        },
-        {
-            "Source": "Visual novel",
-            "count": 168,
-            "avg_score": 6.702738095238095
-        },
-        {
-            "Source": "Original",
-            "count": 1141,
-            "avg_score": 6.5855039439088525
-        },
-        {
-            "Source": "Mixed media",
-            "count": 74,
-            "avg_score": 6.563918918918919
-        },
-        {
-            "Source": "Game",
-            "count": 295,
-            "avg_score": 6.508067796610169
-        },
-        {
-            "Source": "Card game",
-            "count": 49,
-            "avg_score": 6.497142857142857
-        },
-        {
-            "Source": "Other",
-            "count": 178,
-            "avg_score": 6.399887640449439
-        },
-        {
-            "Source": "Web novel",
-            "count": 1,
-            "avg_score": 6.39
-        },
-        {
-            "Source": "Music",
-            "count": 15,
-            "avg_score": 6.301333333333333
-        },
-        {
-            "Source": "Unknown",
-            "count": 253,
-            "avg_score": 6.177786561264822
-        },
-        {
-            "Source": "Picture book",
-            "count": 24,
-            "avg_score": 6.105833333333333
-        },
-        {
-            "Source": "Radio",
-            "count": 4,
-            "avg_score": 5.8875
-        }
-    ]
+  "by_year": [
+    {
+      "Year": 1961.0,
+      "count": 1,
+      "avg_score": 6.16
+    },
+    {
+      "Year": 1962.0,
+      "count": 1,
+      "avg_score": 6.05
+    },
+    {
+      "Year": 1963.0,
+      "count": 5,
+      "avg_score": 6.194
+    },
+    {
+      "Year": 1964.0,
+      "count": 3,
+      "avg_score": 5.973333333333334
+    },
+    {
+      "Year": 1965.0,
+      "count": 9,
+      "avg_score": 5.957777777777777
+    },
+    {
+      "Year": 1966.0,
+      "count": 9,
+      "avg_score": 6.068888888888889
+    },
+    {
+      "Year": 1967.0,
+      "count": 9,
+      "avg_score": 6.302222222222222
+    },
+    {
+      "Year": 1968.0,
+      "count": 10,
+      "avg_score": 6.476000000000001
+    },
+    {
+      "Year": 1969.0,
+      "count": 11,
+      "avg_score": 6.633636363636364
+    },
+    {
+      "Year": 1970.0,
+      "count": 8,
+      "avg_score": 6.50125
+    },
+    {
+      "Year": 1971.0,
+      "count": 14,
+      "avg_score": 6.262857142857143
+    },
+    {
+      "Year": 1972.0,
+      "count": 12,
+      "avg_score": 6.441666666666666
+    },
+    {
+      "Year": 1973.0,
+      "count": 17,
+      "avg_score": 6.311764705882353
+    },
+    {
+      "Year": 1974.0,
+      "count": 19,
+      "avg_score": 6.358421052631579
+    },
+    {
+      "Year": 1975.0,
+      "count": 20,
+      "avg_score": 6.55
+    },
+    {
+      "Year": 1976.0,
+      "count": 22,
+      "avg_score": 6.366818181818181
+    },
+    {
+      "Year": 1977.0,
+      "count": 26,
+      "avg_score": 6.466538461538462
+    },
+    {
+      "Year": 1978.0,
+      "count": 18,
+      "avg_score": 7.020555555555556
+    },
+    {
+      "Year": 1979.0,
+      "count": 24,
+      "avg_score": 6.604166666666667
+    },
+    {
+      "Year": 1980.0,
+      "count": 25,
+      "avg_score": 6.644400000000001
+    },
+    {
+      "Year": 1981.0,
+      "count": 29,
+      "avg_score": 6.719310344827587
+    },
+    {
+      "Year": 1982.0,
+      "count": 28,
+      "avg_score": 6.616785714285714
+    },
+    {
+      "Year": 1983.0,
+      "count": 35,
+      "avg_score": 6.726285714285714
+    },
+    {
+      "Year": 1984.0,
+      "count": 34,
+      "avg_score": 6.508235294117647
+    },
+    {
+      "Year": 1985.0,
+      "count": 18,
+      "avg_score": 6.892222222222222
+    },
+    {
+      "Year": 1986.0,
+      "count": 25,
+      "avg_score": 6.766
+    },
+    {
+      "Year": 1987.0,
+      "count": 26,
+      "avg_score": 6.668461538461538
+    },
+    {
+      "Year": 1988.0,
+      "count": 34,
+      "avg_score": 6.618823529411764
+    },
+    {
+      "Year": 1989.0,
+      "count": 36,
+      "avg_score": 6.741944444444445
+    },
+    {
+      "Year": 1990.0,
+      "count": 22,
+      "avg_score": 6.766363636363637
+    },
+    {
+      "Year": 1991.0,
+      "count": 32,
+      "avg_score": 6.7709375
+    },
+    {
+      "Year": 1992.0,
+      "count": 36,
+      "avg_score": 6.661666666666666
+    },
+    {
+      "Year": 1993.0,
+      "count": 22,
+      "avg_score": 7.058181818181819
+    },
+    {
+      "Year": 1994.0,
+      "count": 31,
+      "avg_score": 6.847096774193548
+    },
+    {
+      "Year": 1995.0,
+      "count": 34,
+      "avg_score": 7.103529411764706
+    },
+    {
+      "Year": 1996.0,
+      "count": 34,
+      "avg_score": 7.241470588235295
+    },
+    {
+      "Year": 1997.0,
+      "count": 43,
+      "avg_score": 6.727209302325581
+    },
+    {
+      "Year": 1998.0,
+      "count": 70,
+      "avg_score": 6.736714285714285
+    },
+    {
+      "Year": 1999.0,
+      "count": 88,
+      "avg_score": 6.72659090909091
+    },
+    {
+      "Year": 2000.0,
+      "count": 56,
+      "avg_score": 6.814285714285715
+    },
+    {
+      "Year": 2001.0,
+      "count": 85,
+      "avg_score": 6.707764705882353
+    },
+    {
+      "Year": 2002.0,
+      "count": 83,
+      "avg_score": 6.83144578313253
+    },
+    {
+      "Year": 2003.0,
+      "count": 101,
+      "avg_score": 6.77910891089109
+    },
+    {
+      "Year": 2004.0,
+      "count": 121,
+      "avg_score": 6.846859504132231
+    },
+    {
+      "Year": 2005.0,
+      "count": 115,
+      "avg_score": 6.951043478260869
+    },
+    {
+      "Year": 2006.0,
+      "count": 164,
+      "avg_score": 6.8757317073170725
+    },
+    {
+      "Year": 2007.0,
+      "count": 140,
+      "avg_score": 6.992285714285714
+    },
+    {
+      "Year": 2008.0,
+      "count": 138,
+      "avg_score": 7.036449275362319
+    },
+    {
+      "Year": 2009.0,
+      "count": 129,
+      "avg_score": 7.042635658914729
+    },
+    {
+      "Year": 2010.0,
+      "count": 109,
+      "avg_score": 6.9971559633027525
+    },
+    {
+      "Year": 2011.0,
+      "count": 145,
+      "avg_score": 6.918344827586207
+    },
+    {
+      "Year": 2012.0,
+      "count": 157,
+      "avg_score": 6.996114649681529
+    },
+    {
+      "Year": 2013.0,
+      "count": 180,
+      "avg_score": 6.825777777777779
+    },
+    {
+      "Year": 2014.0,
+      "count": 204,
+      "avg_score": 6.823039215686275
+    },
+    {
+      "Year": 2015.0,
+      "count": 201,
+      "avg_score": 6.749800995024875
+    },
+    {
+      "Year": 2016.0,
+      "count": 233,
+      "avg_score": 6.685922746781116
+    },
+    {
+      "Year": 2017.0,
+      "count": 217,
+      "avg_score": 6.630875576036867
+    },
+    {
+      "Year": 2018.0,
+      "count": 226,
+      "avg_score": 6.821946902654867
+    },
+    {
+      "Year": 2019.0,
+      "count": 176,
+      "avg_score": 6.80471590909091
+    },
+    {
+      "Year": 2020.0,
+      "count": 172,
+      "avg_score": 6.802674418604651
+    },
+    {
+      "Year": 2021.0,
+      "count": 194,
+      "avg_score": 6.922061855670104
+    },
+    {
+      "Year": 2022.0,
+      "count": 191,
+      "avg_score": 6.964031413612566
+    },
+    {
+      "Year": 2023.0,
+      "count": 219,
+      "avg_score": 7.0368949771689495
+    },
+    {
+      "Year": 2024.0,
+      "count": 222,
+      "avg_score": 7.076351351351351
+    },
+    {
+      "Year": 2025.0,
+      "count": 56,
+      "avg_score": 6.855535714285715
+    }
+  ],
+  "by_studio": [
+    {
+      "Studios": "Kyoto Animation",
+      "count": 28,
+      "avg_score": 7.886428571428572
+    },
+    {
+      "Studios": "Wit Studio",
+      "count": 19,
+      "avg_score": 7.796315789473684
+    },
+    {
+      "Studios": "White Fox",
+      "count": 23,
+      "avg_score": 7.71304347826087
+    },
+    {
+      "Studios": "ufotable",
+      "count": 18,
+      "avg_score": 7.643333333333333
+    },
+    {
+      "Studios": "Production I.G",
+      "count": 64,
+      "avg_score": 7.6046875
+    },
+    {
+      "Studios": "Bones",
+      "count": 64,
+      "avg_score": 7.5915625
+    },
+    {
+      "Studios": "TROYCA",
+      "count": 11,
+      "avg_score": 7.578181818181818
+    },
+    {
+      "Studios": "CloverWorks",
+      "count": 25,
+      "avg_score": 7.5024
+    },
+    {
+      "Studios": "David Production",
+      "count": 23,
+      "avg_score": 7.49304347826087
+    },
+    {
+      "Studios": "MAPPA",
+      "count": 41,
+      "avg_score": 7.45829268292683
+    },
+    {
+      "Studios": "Manglobe",
+      "count": 16,
+      "avg_score": 7.445
+    },
+    {
+      "Studios": "Shaft",
+      "count": 44,
+      "avg_score": 7.428636363636364
+    },
+    {
+      "Studios": "A-1 Pictures",
+      "count": 100,
+      "avg_score": 7.4133000000000004
+    },
+    {
+      "Studios": "Bandai Namco Pictures",
+      "count": 26,
+      "avg_score": 7.379615384615385
+    },
+    {
+      "Studios": "Lerche",
+      "count": 34,
+      "avg_score": 7.352647058823529
+    }
+  ],
+  "by_source": [
+    {
+      "Source": "Manga",
+      "count": 1728,
+      "avg_score": 7.163263888888889
+    },
+    {
+      "Source": "Light novel",
+      "count": 523,
+      "avg_score": 7.079349904397706
+    },
+    {
+      "Source": "Novel",
+      "count": 151,
+      "avg_score": 7.01794701986755
+    },
+    {
+      "Source": "Web manga",
+      "count": 181,
+      "avg_score": 6.967900552486189
+    },
+    {
+      "Source": "Book",
+      "count": 35,
+      "avg_score": 6.8751428571428574
+    },
+    {
+      "Source": "4-koma manga",
+      "count": 154,
+      "avg_score": 6.7416883116883115
+    },
+    {
+      "Source": "Visual novel",
+      "count": 168,
+      "avg_score": 6.702738095238095
+    },
+    {
+      "Source": "Original",
+      "count": 1141,
+      "avg_score": 6.5855039439088525
+    },
+    {
+      "Source": "Mixed media",
+      "count": 74,
+      "avg_score": 6.563918918918919
+    },
+    {
+      "Source": "Game",
+      "count": 295,
+      "avg_score": 6.508067796610169
+    },
+    {
+      "Source": "Card game",
+      "count": 49,
+      "avg_score": 6.497142857142857
+    },
+    {
+      "Source": "Other",
+      "count": 178,
+      "avg_score": 6.399887640449439
+    },
+    {
+      "Source": "Web novel",
+      "count": 1,
+      "avg_score": 6.39
+    },
+    {
+      "Source": "Music",
+      "count": 15,
+      "avg_score": 6.301333333333333
+    },
+    {
+      "Source": "Unknown",
+      "count": 253,
+      "avg_score": 6.177786561264822
+    },
+    {
+      "Source": "Picture book",
+      "count": 24,
+      "avg_score": 6.105833333333333
+    },
+    {
+      "Source": "Radio",
+      "count": 4,
+      "avg_score": 5.8875
+    }
+  ],
+  "by_genre": [
+    {
+      "Genres": "Suspense",
+      "count": 184,
+      "avg_score": 7.297554347826087,
+      "avg_members": 554158.5,
+      "avg_favorites": 10572.521739130434
+    },
+    {
+      "Genres": "Drama",
+      "count": 877,
+      "avg_score": 7.179726339794755,
+      "avg_members": 220149.02964652225,
+      "avg_favorites": 4104.955530216647
+    },
+    {
+      "Genres": "Mystery",
+      "count": 352,
+      "avg_score": 7.172528409090909,
+      "avg_members": 245062.47443181818,
+      "avg_favorites": 3246.971590909091
+    },
+    {
+      "Genres": "Romance",
+      "count": 866,
+      "avg_score": 7.0614087759815245,
+      "avg_members": 243670.25288683604,
+      "avg_favorites": 2468.5623556581986
+    },
+    {
+      "Genres": "Supernatural",
+      "count": 468,
+      "avg_score": 7.030769230769231,
+      "avg_members": 257810.61752136753,
+      "avg_favorites": 3546.1068376068374
+    },
+    {
+      "Genres": "Boys Love",
+      "count": 34,
+      "avg_score": 7.024411764705882,
+      "avg_members": 111141.0294117647,
+      "avg_favorites": 1364.4705882352941
+    },
+    {
+      "Genres": "Sports",
+      "count": 273,
+      "avg_score": 7.001501831501832,
+      "avg_members": 107868.00732600733,
+      "avg_favorites": 1358.3553113553114
+    },
+    {
+      "Genres": "Girls Love",
+      "count": 41,
+      "avg_score": 6.975365853658537,
+      "avg_members": 137006.29268292684,
+      "avg_favorites": 1020.8536585365854
+    },
+    {
+      "Genres": "Action",
+      "count": 1709,
+      "avg_score": 6.9126799297835,
+      "avg_members": 233779.06026916325,
+      "avg_favorites": 3244.8057343475716
+    },
+    {
+      "Genres": "Adventure",
+      "count": 1162,
+      "avg_score": 6.852659208261618,
+      "avg_members": 150281.0516351119,
+      "avg_favorites": 2452.4535283993114
+    },
+    {
+      "Genres": "Fantasy",
+      "count": 1239,
+      "avg_score": 6.84996771589992,
+      "avg_members": 209791.3131557708,
+      "avg_favorites": 2637.7070217917676
+    },
+    {
+      "Genres": "Gourmet",
+      "count": 65,
+      "avg_score": 6.8321538461538465,
+      "avg_members": 163208.16923076924,
+      "avg_favorites": 928.1846153846154
+    },
+    {
+      "Genres": "Slice of Life",
+      "count": 408,
+      "avg_score": 6.797549019607843,
+      "avg_members": 66122.60294117648,
+      "avg_favorites": 631.7549019607843
+    },
+    {
+      "Genres": "Sci-Fi",
+      "count": 972,
+      "avg_score": 6.78238683127572,
+      "avg_members": 116051.74176954733,
+      "avg_favorites": 1687.3302469135801
+    },
+    {
+      "Genres": "Comedy",
+      "count": 2031,
+      "avg_score": 6.754766125061546,
+      "avg_members": 131494.29295913343,
+      "avg_favorites": 1238.1821762678483
+    },
+    {
+      "Genres": "Avant Garde",
+      "count": 31,
+      "avg_score": 6.67,
+      "avg_members": 168713.83870967742,
+      "avg_favorites": 5493.709677419355
+    },
+    {
+      "Genres": "Horror",
+      "count": 150,
+      "avg_score": 6.6690000000000005,
+      "avg_members": 234871.53333333333,
+      "avg_favorites": 2439.6133333333332
+    },
+    {
+      "Genres": "Ecchi",
+      "count": 323,
+      "avg_score": 6.647027863777089,
+      "avg_members": 243724.25386996905,
+      "avg_favorites": 1397.7461300309596
+    }
+  ]
 }
