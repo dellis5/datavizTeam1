@@ -4,12 +4,12 @@ You can't just open the HTML file directly in your browser — it needs a local 
 
 ### If you have Python installed
 
-1. Open a terminal and navigate to this folder
+1. Open a terminal and navigate to project folder
 2. Run:
 ```bash
 py -m http.server 8080
 ```
 3. Open your browser and go to:
 
-4. http://localhost:8080/vispractice1.html
+4. http://localhost:8080/testingfinal.html
    
