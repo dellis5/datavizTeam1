@@ -1,17 +1,4 @@
-# datavizTeam1
-
-TEST HERE AFTER PUSHES:
-
-https://dellis5.github.io/datavizTeam1/vispractice1.html 
-
-A scrollytelling data visualization exploring six decades of anime production and quality, built with D3.js and Scrollama.
-
-## Files
-
-- `vispractice1.html` — the main visualization
-- `anime_data.json` — preprocessed anime dataset (generated from `anime-dataset-2025.csv` via pandas)
-
-## How to Run
+## User Guide
 
 You can't just open the HTML file directly in your browser — it needs a local server to load the JSON file. Here's the quickest way:
 
