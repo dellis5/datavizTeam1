@@ -2,7 +2,9 @@
 
 You can't just open the HTML file directly in your browser — it needs a local server to load the JSON file. Here's the quickest way:
 
-### If you have Python installed
+Ensure that Python is installed. The latest version will do.
+
+### Once installed, do the following:
 
 1. Open a terminal and navigate to project folder
 2. Run:
