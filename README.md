@@ -1,28 +1,50 @@
 # datavizTeam1
+**GitHub Repository:** https://github.com/dellis5/datavizTeam1
 
-TEST HERE AFTER PUSHES:
+# Directory Structure
 
-https://dellis5.github.io/datavizTeam1/vispractice1.html 
+main/
+   testingfinal.html
+   anime_data.json
+   anime-dataset-2025.csv
+   user_guide.md
+   README.md
 
-A scrollytelling data visualization exploring six decades of anime production and quality, built with D3.js and Scrollama.
+# File Descriptions
 
-## Files
+testingfinal.html : The main scrollytelling visualization code. Includes all CSS and HTML structure with chart logic and implementation. Retrieves anime_data.json to generate chart data.
 
-- `vispractice1.html` — the main visualization
-- `anime_data.json` — preprocessed anime dataset (generated from `anime-dataset-2025.csv` via pandas)
+anime_data.json : Adjusted JSON made from original anime-dataset-2025.csv from Kaggle. Contains by_year, by_studio, by_source, and by_genre as the main keys of sorted data.
 
-## How to Run
+anime-dataset-2025.csv : Original dataset containing detailed information about various anime series and movies. This dataset was uploaded from Kaggle and its data was originally sourced from MyAnimeList. Here is the original dataset link : https://www.kaggle.com/datasets/rafidahmed816/anime-dataset-2025
 
-You can't just open the HTML file directly in your browser — it needs a local server to load the JSON file. Here's the quickest way:
+user-guide.md : Instructions on how to run the code.
 
-### If you have Python installed
+README.md : Project documentation.
 
-1. Open a terminal and navigate to this folder
-2. Run:
-```bash
-py -m http.server 8080
-```
-3. Open your browser and go to:
+# Contact
 
-4. http://localhost:8080/vispractice1.html
+Bhavya - 
+
+Daniel - dellis4@umbc.edu
+
+Kathleen - kvo4@umbc.edu
+
+Leah -
+
+Nirupam - nchetla1@umbc.edu
+
+
+# Libraries & Licenses
+
+D3.js - https://d3js.org/ : Javascript chart and data vis lirbary
+   
+Scrollama - https://github.com/russellsamora/scrollama : Scrollytelling library used for transitions and such
+
+Google Fonts: Bebas Neue - https://fonts.google.com/specimen/Bebas+Neue
+
+Google Fonts: DM+Sans - https://fonts.google.com/specimen/DM+Sans
+
+
+All libraries are loaded via URL instead. No npm installation is required.
    
