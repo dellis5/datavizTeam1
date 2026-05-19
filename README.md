@@ -3,12 +3,16 @@
 
 # Directory Structure
 
+
+```
 main/
-   testingfinal.html
-   anime_data.json
-   anime-dataset-2025.csv
-   user_guide.md
-   README.md
+├── testingfinal.html
+├── anime_data.json
+├── anime-dataset-2025.csv
+├── user_guide.md
+└── README.md
+```
+   
 
 # File Descriptions
 
