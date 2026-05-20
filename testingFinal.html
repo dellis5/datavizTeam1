@@ -681,11 +681,11 @@
 
     const genres = data.by_genre;
 
-    const x = d3.scaleLog()
+    const x = d3.scaleLinear()
       .domain([d3.min(genres, d=>d.avg_members)*0.8, d3.max(genres, d=>d.avg_members)*1.1])
       .range([0, W]);
 
-    const y = d3.scaleLog()
+    const y = d3.scaleLinear()
       .domain([d3.min(genres, d=>d.avg_favorites)*0.8, d3.max(genres, d=>d.avg_favorites)*1.15])
       .range([H, 0]);
 
