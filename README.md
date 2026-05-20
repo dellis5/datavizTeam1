@@ -28,13 +28,13 @@ README.md : Project documentation.
 
 # Contact
 
-Bhavya - 
+Bhavya - bhavyas1@umbc.edu
 
 Daniel - dellis4@umbc.edu
 
 Kathleen - kvo4@umbc.edu
 
-Leah -
+Leah - leaha3@umbc.edu
 
 Nirupam - nchetla1@umbc.edu
 
